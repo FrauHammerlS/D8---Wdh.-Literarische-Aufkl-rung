@@ -1,0 +1,2409 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wiederholung: Die literarische Aufklärung</title>
+<style>
+  :root {
+    --nacht: #111c33;
+    --blau: #1d4673;
+    --blau-hell: #2d65a3;
+    --gold: #e59a24;
+    --gold-hell: #ffd685;
+    --pergament: #fcfaf4;
+    --papier: #f5efe0;
+    --hellblau: #eef4fc;
+    --gruen: #267339;
+    --gruen-bg: #e7f6eb;
+    --rot: #b92b27;
+    --rot-bg: #fdeaea;
+    --text: #1c2434;
+    --grau: #5c677d;
+    --border: #dce4f0;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+    background: #ebeff5;
+    color: var(--text);
+    line-height: 1.65;
+    padding-bottom: 70px;
+  }
+
+  /* Header & Hero */
+  header {
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at 75% 25%, #3768a6 0%, #1d4673 42%, #111c33 90%);
+    color: #fff;
+    padding: 44px 20px 54px;
+    text-align: center;
+  }
+
+  header h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(1.9rem, 4.5vw, 3rem);
+    margin: 12px 0 8px;
+    letter-spacing: 0.4px;
+  }
+
+  header p {
+    margin: 0 auto;
+    max-width: 680px;
+    font-size: 1.1rem;
+    color: #e4ecf8;
+  }
+
+  .header-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  header .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--gold);
+    color: var(--nacht);
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 5px 15px;
+    border-radius: 999px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  header .badge.sub {
+    background: rgba(255, 255, 255, 0.14);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    font-weight: 600;
+  }
+
+  .hero-svg {
+    width: 118px;
+    height: 118px;
+    filter: drop-shadow(0 0 22px rgba(255, 214, 133, 0.55));
+  }
+
+  /* Sticky Navigation & Progress */
+  .nav-wrap {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 3px 14px rgba(17, 28, 51, 0.08);
+  }
+
+  nav {
+    max-width: 1020px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+    padding: 8px 10px;
+  }
+
+  nav a {
+    color: var(--blau);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.88rem;
+    transition: all 0.2s ease;
+  }
+
+  nav a:hover {
+    background: var(--blau);
+    color: #fff;
+  }
+
+  .progress-bar-container {
+    width: 100%;
+    height: 6px;
+    background: #dde4ee;
+    position: relative;
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--blau-hell), var(--gold));
+    transition: width 0.4s ease;
+  }
+
+  /* Main Layout */
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 16px;
+  }
+
+  section {
+    background: #fff;
+    border-radius: 20px;
+    padding: 0 0 26px;
+    margin: 26px 0;
+    box-shadow: 0 8px 24px rgba(17, 28, 51, 0.06);
+    overflow: hidden;
+    border: 1px solid #e3e9f2;
+  }
+
+  .sec-head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 26px;
+    background: linear-gradient(125deg, var(--nacht), var(--blau));
+    color: #fff;
+  }
+
+  .sec-head .ico {
+    font-size: 2rem;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 58px;
+    height: 58px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .sec-head h2 {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.5rem;
+  }
+
+  .sec-head small {
+    color: #cdd9ec;
+    font-size: 0.92rem;
+  }
+
+  .inner {
+    padding: 10px 26px 4px;
+  }
+
+  h3 {
+    color: var(--blau);
+    margin-top: 22px;
+    margin-bottom: 10px;
+    font-size: 1.18rem;
+  }
+
+  /* Info & Merke Boxes */
+  .info {
+    background: var(--hellblau);
+    border-left: 5px solid var(--blau);
+    padding: 15px 18px;
+    border-radius: 12px;
+    margin: 16px 0;
+  }
+
+  .info p {
+    margin: 6px 0;
+  }
+
+  .merke {
+    background: #fff8e6;
+    border-left: 5px solid var(--gold);
+    padding: 14px 18px;
+    border-radius: 12px;
+    margin: 16px 0;
+  }
+
+  .merke::before {
+    content: "💡 Merke: ";
+    font-weight: 700;
+    color: #9e6305;
+  }
+
+  .zitat {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    text-align: center;
+    background: linear-gradient(135deg, var(--nacht), #1c3159);
+    color: var(--gold-hell);
+    padding: 22px 24px;
+    border-radius: 16px;
+    margin: 18px 0;
+    box-shadow: 0 6px 16px rgba(17, 28, 51, 0.14);
+  }
+
+  .zitat span {
+    display: block;
+    font-size: 0.82rem;
+    color: #c9d5ea;
+    margin-top: 8px;
+    font-style: normal;
+    font-family: "Inter", "Segoe UI", sans-serif;
+  }
+
+  /* Grids & Tiles */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+    gap: 14px;
+    margin: 16px 0;
+  }
+
+  .tile {
+    background: var(--pergament);
+    border: 1px solid #e7dec8;
+    border-radius: 14px;
+    padding: 15px 12px;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .tile:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(17, 28, 51, 0.08);
+  }
+
+  .tile .big {
+    font-size: 2.2rem;
+    margin-bottom: 4px;
+  }
+
+  .tile b {
+    display: block;
+    color: var(--blau);
+    margin-bottom: 4px;
+  }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    margin: 26px 0 18px;
+    padding: 36px 0 28px;
+  }
+
+  .timeline .bar {
+    height: 10px;
+    border-radius: 6px;
+    background: linear-gradient(90deg, #9aa6b8, var(--gold), #9aa6b8);
+  }
+
+  .timeline .ev {
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 0.78rem;
+    width: 115px;
+    line-height: 1.25;
+  }
+
+  .timeline .ev.dn {
+    top: 52px;
+  }
+
+  .timeline .ev::after {
+    content: "";
+    display: block;
+    width: 2px;
+    height: 14px;
+    background: var(--blau);
+    margin: 3px auto 0;
+  }
+
+  .timeline .ev.dn::after {
+    display: none;
+  }
+
+  .timeline .ev.dn::before {
+    content: "";
+    display: block;
+    width: 2px;
+    height: 12px;
+    background: var(--blau);
+    margin: 0 auto 3px;
+  }
+
+  .timeline .epoch {
+    position: absolute;
+    left: 20%;
+    width: 60%;
+    top: 30px;
+    height: 22px;
+    border: 2.5px solid var(--blau);
+    border-radius: 8px;
+    background: rgba(229, 154, 36, 0.22);
+  }
+
+  /* Autoren */
+  .autor {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    background: var(--pergament);
+    border: 1px solid #e7dec8;
+    border-radius: 14px;
+    padding: 12px 16px;
+    margin: 10px 0;
+  }
+
+  .autor .av {
+    width: 54px;
+    height: 54px;
+    border-radius: 14px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.45rem;
+    color: #fff;
+    font-family: Georgia, serif;
+    font-weight: 700;
+  }
+
+  .autor .t b {
+    color: var(--blau);
+    font-size: 1.04rem;
+  }
+
+  .autor .t small {
+    color: var(--grau);
+  }
+
+  /* Fabel Cards & Vector Scenes */
+  .fabel {
+    background: var(--pergament);
+    border: 1px solid #e3d6b8;
+    border-radius: 18px;
+    margin: 24px 0 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 16px rgba(17, 28, 51, 0.06);
+  }
+
+  .szene-wrap {
+    position: relative;
+    width: 100%;
+    background: #dce8f5;
+    border-bottom: 1px solid #e3d6b8;
+    line-height: 0;
+  }
+
+  .szene-wrap svg {
+    width: 100%;
+    height: auto;
+    max-height: 220px;
+    display: block;
+  }
+
+  .szene-wrap .lbl {
+    position: absolute;
+    top: 12px;
+    left: 14px;
+    font-size: 0.82rem;
+    line-height: 1.2;
+    background: rgba(17, 28, 51, 0.85);
+    color: var(--gold-hell);
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    backdrop-filter: blur(4px);
+  }
+
+  .fabel .txt {
+    padding: 18px 24px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.05rem;
+  }
+
+  .fabel h4 {
+    margin: 0 0 10px;
+    font-family: "Inter", "Segoe UI", sans-serif;
+    color: var(--blau);
+    font-size: 1.18rem;
+  }
+
+  .lehre {
+    background: var(--papier);
+    border-left: 4px solid var(--gold);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-style: italic;
+    margin-top: 12px;
+  }
+
+  /* Task Boxes */
+  .task {
+    border: 2px solid var(--border);
+    border-radius: 16px;
+    padding: 18px 22px;
+    margin: 20px 0;
+    background: #fcfdff;
+    transition: border-color 0.3s ease;
+  }
+
+  .task.done {
+    border-color: #b7d7c0;
+    background: #fafdfb;
+  }
+
+  .task-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e8eef6;
+  }
+
+  .task-header h3 {
+    margin: 0;
+    font-size: 1.12rem;
+  }
+
+  .task-header h3::before {
+    content: "✏️ ";
+  }
+
+  .task-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .pts-badge {
+    background: var(--hellblau);
+    color: var(--blau);
+    font-weight: 700;
+    font-size: 0.82rem;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid #c9daf0;
+  }
+
+  .status-badge {
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #f0f2f5;
+    color: var(--grau);
+  }
+
+  .status-badge.completed {
+    background: var(--gruen-bg);
+    color: var(--gruen);
+  }
+
+  .task .q {
+    font-weight: 600;
+    margin: 14px 0 6px;
+    color: var(--nacht);
+  }
+
+  /* Controls & Buttons */
+  .btn-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  button {
+    background: var(--blau);
+    color: #fff;
+    border: 0;
+    border-radius: 999px;
+    padding: 9px 18px;
+    cursor: pointer;
+    font-size: 0.92rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  button:hover:not(:disabled) {
+    background: var(--nacht);
+    transform: translateY(-1px);
+  }
+
+  button.sek {
+    background: #fff;
+    color: var(--blau);
+    border: 2px solid var(--blau);
+  }
+
+  button.sek:hover:not(:disabled) {
+    background: var(--hellblau);
+    color: var(--nacht);
+  }
+
+  button:disabled {
+    opacity: 0.48;
+    cursor: not-allowed;
+    transform: none !important;
+    background: #cbd5e1;
+    color: #475569;
+    border-color: #cbd5e1;
+  }
+
+  input[type="text"],
+  textarea,
+  select {
+    font-size: 0.96rem;
+    padding: 7px 10px;
+    border: 1.5px solid #b4bfd0;
+    border-radius: 10px;
+    font-family: inherit;
+    background: #fff;
+    color: var(--text);
+    transition: border-color 0.2s;
+  }
+
+  input[type="text"]:focus,
+  textarea:focus,
+  select:focus {
+    outline: none;
+    border-color: var(--blau);
+  }
+
+  input:disabled,
+  textarea:disabled,
+  select:disabled {
+    background: #f4f6f9;
+    color: #334155;
+    cursor: not-allowed;
+  }
+
+  textarea {
+    width: 100%;
+    min-height: 74px;
+    resize: vertical;
+  }
+
+  input.gap {
+    width: 155px;
+    margin: 2px 3px;
+  }
+
+  .ok {
+    background: var(--gruen-bg) !important;
+    border-color: var(--gruen) !important;
+    color: #144520 !important;
+  }
+
+  .no {
+    background: var(--rot-bg) !important;
+    border-color: var(--rot) !important;
+    color: #6e1412 !important;
+  }
+
+  .fb {
+    margin-top: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .fb.warn {
+    color: var(--rot);
+  }
+
+  .fb.success {
+    color: var(--gruen);
+  }
+
+  .loesung {
+    display: none;
+    background: var(--gruen-bg);
+    border-left: 5px solid var(--gruen);
+    padding: 14px 18px;
+    border-radius: 12px;
+    margin-top: 14px;
+    font-size: 0.95rem;
+  }
+
+  label.opt {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 9px 14px;
+    margin: 6px 0;
+    border-radius: 12px;
+    cursor: pointer;
+    border: 1.5px solid #dfe6f0;
+    background: #fff;
+    transition: border-color 0.15s;
+  }
+
+  label.opt:hover {
+    border-color: var(--blau);
+  }
+
+  label.opt input[type="radio"] {
+    margin-top: 4px;
+    accent-color: var(--blau);
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  td,
+  th {
+    border: 1px solid #d8dfea;
+    padding: 9px 11px;
+    vertical-align: middle;
+  }
+
+  th {
+    background: var(--hellblau);
+    text-align: left;
+    color: var(--nacht);
+  }
+
+  .tiertab td:first-child {
+    font-size: 1.5rem;
+    text-align: center;
+    width: 54px;
+  }
+
+  /* Lernkarten */
+  #kartenbox {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 18px;
+    margin-top: 14px;
+  }
+
+  .karte {
+    height: 195px;
+    perspective: 1000px;
+    cursor: pointer;
+  }
+
+  .karte .in {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.65s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transform-style: preserve-3d;
+  }
+
+  .karte.flip .in {
+    transform: rotateY(180deg);
+  }
+
+  .karte .v,
+  .karte .r {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 16px;
+    box-shadow: 0 6px 18px rgba(17, 28, 51, 0.14);
+  }
+
+  .karte .v {
+    background: linear-gradient(145deg, var(--blau), var(--nacht));
+    color: #fff;
+  }
+
+  .karte .v .em {
+    font-size: 2.5rem;
+    margin-bottom: 6px;
+  }
+
+  .karte .v .tt {
+    font-size: 1.08rem;
+    font-weight: 700;
+  }
+
+  .karte .v .hint {
+    font-size: 0.74rem;
+    opacity: 0.68;
+    margin-top: 10px;
+  }
+
+  .karte .r {
+    background: linear-gradient(145deg, #fff9eb, #ffe9ba);
+    transform: rotateY(180deg);
+    font-size: 1.02rem;
+    font-family: Georgia, serif;
+    color: var(--nacht);
+    border: 2px solid var(--gold);
+  }
+
+  .kartennav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  /* Floating Score Badge */
+  #score {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    background: linear-gradient(135deg, var(--nacht), var(--blau));
+    color: var(--gold-hell);
+    border: 2px solid var(--gold);
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.96rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.28);
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  #quizfb {
+    font-size: 1.08rem;
+    padding: 20px;
+    border-radius: 16px;
+    display: none;
+    margin-top: 18px;
+    text-align: center;
+  }
+
+  #quizfb.top {
+    background: linear-gradient(135deg, #e7f6eb, #cdebd5);
+    border: 2px solid var(--gruen);
+  }
+
+  #quizfb.mid {
+    background: #fff8e6;
+    border: 2px solid var(--gold);
+  }
+
+  #quizfb.low {
+    background: #fdeaea;
+    border: 2px solid var(--rot);
+  }
+
+  #quizfb .gross {
+    font-size: 2.5rem;
+    margin-bottom: 6px;
+  }
+
+  footer {
+    text-align: center;
+    color: var(--grau);
+    font-size: 0.86rem;
+    padding: 24px 16px;
+  }
+
+  @media (max-width: 640px) {
+    .inner {
+      padding: 8px 14px;
+    }
+    .sec-head {
+      padding: 16px;
+    }
+    .timeline .ev {
+      font-size: 0.66rem;
+      width: 78px;
+    }
+    input.gap {
+      width: 130px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <svg class="hero-svg" viewBox="0 0 100 100" aria-hidden="true">
+    <defs>
+      <radialGradient id="g" cx="50%" cy="40%">
+        <stop offset="0" stop-color="#fff8dc"/>
+        <stop offset="1" stop-color="#e59a24"/>
+      </radialGradient>
+    </defs>
+    <g stroke="#ffd685" stroke-width="3" stroke-linecap="round">
+      <line x1="50" y1="4" x2="50" y2="14"/>
+      <line x1="14" y1="40" x2="4" y2="40"/>
+      <line x1="86" y1="40" x2="96" y2="40"/>
+      <line x1="22" y1="14" x2="28" y2="21"/>
+      <line x1="78" y1="14" x2="72" y2="21"/>
+    </g>
+    <path d="M50 20c-13 0-23 10-23 23 0 9 5 14 9 19 2 3 3 6 3 9h22c0-3 1-6 3-9 4-5 9-10 9-19 0-13-10-23-23-23z" fill="url(#g)"/>
+    <rect x="39" y="74" width="22" height="6" rx="2" fill="#cdd6e8"/>
+    <rect x="41" y="82" width="18" height="6" rx="2" fill="#cdd6e8"/>
+    <path d="M44 60 l6-14 6 14" fill="none" stroke="#9e6305" stroke-width="2.5"/>
+  </svg>
+  <h1>Die literarische Aufklärung</h1>
+  <p>„Licht ins Dunkel bringen“ – Interaktive Wiederholung &amp; Übungseinheit</p>
+  <div class="header-badges">
+    <span class="badge">Deutsch · 8. Klasse</span>
+    <span class="badge sub">18. Jahrhundert (ca. 1720 – 1790)</span>
+    <span class="badge sub">⏱️ Bearbeitungszeit: ca. 45 Min.</span>
+  </div>
+</header>
+
+<div class="nav-wrap">
+  <nav>
+    <a href="#epoche">🕯️ 1. Epoche</a>
+    <a href="#autoren">✒️ 2. Autoren</a>
+    <a href="#fabel">🦊 3. Fabel</a>
+    <a href="#fabeltexte">📜 4. Fabeltexte</a>
+    <a href="#aphorismus">💬 5. Aphorismus</a>
+    <a href="#karten">🃏 6. Lernkarten</a>
+    <a href="#abschluss">🏆 7. Wissens-Check</a>
+  </nav>
+  <div class="progress-bar-container" title="Bearbeitungsfortschritt">
+    <div class="progress-bar-fill" id="progressBar"></div>
+  </div>
+</div>
+
+<main>
+
+  <!-- ============ 1. EPOCHE ============ -->
+  <section id="epoche">
+    <div class="sec-head">
+      <div class="ico">🕯️</div>
+      <div>
+        <h2>1. Die Epoche der Aufklärung</h2>
+        <small>Zeitraum, Leitideen und neues Menschenbild</small>
+      </div>
+    </div>
+    <div class="inner">
+
+      <div class="timeline">
+        <div class="ev" style="left:8%">um 1650<br>Barock</div>
+        <div class="ev" style="left:20%"><b>1720</b><br>Beginn</div>
+        <div class="ev" style="left:46%">1759<br>Lessings Fabeln</div>
+        <div class="ev" style="left:80%"><b>1790</b><br>Ende</div>
+        <div class="epoch"></div>
+        <div class="bar"></div>
+        <div class="ev dn" style="left:38%">1729 Lessing geboren</div>
+        <div class="ev dn" style="left:66%">1784 Kant: „Was ist Aufklärung?“</div>
+        <div class="ev dn" style="left:92%">ab ca. 1770 Sturm und Drang</div>
+      </div>
+
+      <div class="info">
+        <p><b>⏳ Zeitraum:</b> <b>18. Jahrhundert</b> (ca. <b>1720 bis 1790</b>).</p>
+        <p><b>🧠 Leitidee:</b> Der Mensch soll seinen eigenen <b>Verstand (die Vernunft)</b> gebrauchen, statt blind Autoritäten wie Kirche, König oder überlieferten Traditionen zu gehorchen. Bildung, Wissenschaft und kritisches Denken sollen die Menschen „erleuchten“ (englisch <i>Enlightenment</i>, französisch <i>Siècle des Lumières</i>).</p>
+      </div>
+
+      <div class="zitat">
+        „Aufklärung ist der Ausgang des Menschen aus seiner selbstverschuldeten Unmündigkeit. […] Sapere aude! Habe Mut, dich deines eigenen Verstandes zu bedienen!“
+        <span>Immanuel Kant, 1784</span>
+      </div>
+
+      <h3>Was ändert sich durch die Aufklärung?</h3>
+      <div class="grid">
+        <div class="tile"><div class="big">⛪👑</div><b>Vor der Aufklärung</b>Kirche und Adel geben vor, was als wahr und richtig gilt.</div>
+        <div class="tile"><div class="big">📖</div><b>Wichtigstes Buch vorher</b>Die <b>Bibel</b> war zuvor das mit Abstand bedeutendste Werk.</div>
+        <div class="tile"><div class="big">🎩👩‍🍳</div><b>Neu im Mittelpunkt</b>Das <b>Bürgertum</b>: Kaufleute, Handwerker, Gelehrte und Familien.</div>
+        <div class="tile"><div class="big">🎓✨</div><b>Ziel der Literatur</b>Die Leser <b>belehren</b> und zugleich unterhalten („nützen und erfreuen“).</div>
+      </div>
+
+      <p><b>Zentrale Werte:</b> Vernunft · Toleranz · Bildung · Tugend · Kritikfähigkeit · Menschlichkeit</p>
+      <div class="merke">Typische Gattungen der Aufklärung sind die <b>Fabel</b>, der <b>Aphorismus</b>, das Lehrgedicht sowie das bürgerliche Trauerspiel (z. B. Lessings „Emilia Galotti“) und das Ideendrama („Nathan der Weise“).</div>
+
+      <!-- Aufgabe 1 -->
+      <div class="task" id="task-rf" data-points="5">
+        <div class="task-header">
+          <h3>Aufgabe 1: Richtig oder falsch? Verbessere Falsches.</h3>
+          <div class="task-meta">
+            <span class="pts-badge">5 Punkte</span>
+            <span class="status-badge" id="status-rf">Offen</span>
+          </div>
+        </div>
+        <p>Prüfe jede Aussage genau. Wenn eine Aussage falsch ist, kreuze „falsch“ an und schreibe die richtige Verbesserung in das Textfeld darunter.</p>
+        <div id="rf"></div>
+        <div class="btn-row">
+          <button id="btn-check-rf" onclick="checkRF()">Überprüfen</button>
+          <button class="sek" id="btn-sol-rf" disabled title="Bitte bearbeite und überprüfe zuerst die Aufgabe." onclick="toggle('rfL')">🔒 Lösung einblenden</button>
+        </div>
+        <div class="fb" id="fb-rf"></div>
+        <div class="loesung" id="rfL"></div>
+      </div>
+
+      <!-- Aufgabe 2 -->
+      <div class="task" id="task-gaps" data-points="6">
+        <div class="task-header">
+          <h3>Aufgabe 2: Lückentext zur Epoche</h3>
+          <div class="task-meta">
+            <span class="pts-badge">6 Punkte</span>
+            <span class="status-badge" id="status-gaps">Offen</span>
+          </div>
+        </div>
+        <p>Vervollständige den Überblickstext mit den passenden Fachbegriffen:</p>
+        <p>Die literarische Aufklärung prägte das <input class="gap" data-a="18|18.|achtzehnte" type="text"> Jahrhundert (ca. 1720 bis 1790). Ihr wichtigster Maßstab ist nicht mehr der blinde Gehorsam, sondern die <input class="gap" data-a="vernunft|verstand" type="text">. Der Philosoph <input class="gap" data-a="kant|immanuel kant" type="text"> wählte dafür den lateinischen Wahlspruch „<input class="gap" data-a="sapere aude|sapere aude!" type="text">“. In den literarischen Werken stehen nun nicht mehr nur Adlige, sondern <input class="gap" data-a="bürgerliche|bürger|bürgerliche menschen" type="text"> Menschen im Mittelpunkt. Ziel der Texte ist es, die Leser zu <input class="gap" data-a="belehren|erziehen|bilden" type="text"> und zu unterhalten.</p>
+        <div class="btn-row">
+          <button id="btn-check-gaps" onclick="checkGaps()">Überprüfen</button>
+          <button class="sek" id="btn-sol-gaps" disabled title="Bitte bearbeite und überprüfe zuerst die Aufgabe." onclick="showGaps()">🔒 Lösung einblenden</button>
+        </div>
+        <div class="fb" id="fb-gaps"></div>
+      </div>
+
+      <!-- Aufgabe 3 -->
+      <div class="task" id="task-kant" data-points="4">
+        <div class="task-header">
+          <h3>Aufgabe 3: Leitgedanken der Aufklärung erklären</h3>
+          <div class="task-meta">
+            <span class="pts-badge">4 Punkte</span>
+            <span class="status-badge" id="status-kant">Offen</span>
+          </div>
+        </div>
+        <div class="q">a) Übersetze Kants lateinischen Leitspruch „Sapere aude!“ und erkläre in eigenen Worten, was damit gemeint ist.</div>
+        <textarea id="txt-kant-a" placeholder="Deine Erklärung zu ‚Sapere aude!‘ …"></textarea>
+        <div class="q">b) Was bedeutet der Begriff „selbstverschuldete Unmündigkeit“? Erkläre in einem bis zwei Sätzen.</div>
+        <textarea id="txt-kant-b" placeholder="Deine Erklärung zu ‚selbstverschuldete Unmündigkeit‘ …"></textarea>
+        <div class="btn-row">
+          <button id="btn-check-kant" onclick="checkOpenTask('kant', ['txt-kant-a', 'txt-kant-b'], 4)">Antwort einreichen &amp; prüfen</button>
+          <button class="sek" id="btn-sol-kant" disabled title="Bitte formuliere zuerst deine Antworten und klicke auf Einreichen." onclick="toggle('sol-kant')">🔒 Musterlösung einblenden</button>
+        </div>
+        <div class="fb" id="fb-kant"></div>
+        <div class="loesung" id="sol-kant">
+          <b>a) „Sapere aude!“:</b> Übersetzt bedeutet das „Habe Mut, dich deines eigenen Verstandes zu bedienen!“ (oder: „Wage es, weise zu sein!“). Gemeint ist, dass Menschen selbstständig denken, Dinge hinterfragen und sich nicht einfach auf die Meinung anderer verlassen sollen.<br>
+          <b>b) „Selbstverschuldete Unmündigkeit“:</b> Unmündigkeit heißt, dass man nicht selbst entscheidet, sondern sich von anderen (z. B. Kirche, Staat, Obrigkeiten) leiten lässt. Sie ist „selbstverschuldet“, weil der Mensch eigentlich genug Verstand hätte, aber aus Bequemlichkeit, Faulheit oder Feigheit nicht selbst denkt.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ 2. AUTOREN ============ -->
+  <section id="autoren">
+    <div class="sec-head">
+      <div class="ico">✒️</div>
+      <div>
+        <h2>2. Wichtige Denker und Dichter</h2>
+        <small>Bedeutende Persönlichkeiten der Aufklärung und der Fabeltradition</small>
+      </div>
+    </div>
+    <div class="inner">
+      <div class="autor"><div class="av" style="background:#7d5a50">Ä</div><div class="t"><b>Äsop</b> <small>(ca. 6. Jh. v. Chr., Griechenland)</small><br>Gilt als „Vater der Fabel“: Von ihm stammen die ersten überlieferten antiken Fabeln.</div></div>
+      <div class="autor"><div class="av" style="background:#6a1b9a">LF</div><div class="t"><b>Jean de La Fontaine</b> <small>(1621–1695, Frankreich)</small><br>Berühmter französischer Fabeldichter des 17. Jahrhunderts, dessen Versfabeln viele Aufklärer inspirierten.</div></div>
+      <div class="autor"><div class="av" style="background:#1d4673">L</div><div class="t"><b>Gotthold Ephraim Lessing</b> <small>(1729–1781)</small><br>Wichtigster Dichter der deutschen Aufklärung: schrieb Fabeln (1759), „Minna von Barnhelm“, „Emilia Galotti“, „Nathan der Weise“ (Ringparabel → Toleranz) sowie Sinnsprüche.</div></div>
+      <div class="autor"><div class="av" style="background:#267339">Li</div><div class="t"><b>Georg Christoph Lichtenberg</b> <small>(1742–1799)</small><br>Physiker und Schriftsteller in Göttingen; gilt als <b>Begründer des deutschen Aphorismus</b> („Sudelbücher“).</div></div>
+      <div class="autor"><div class="av" style="background:#37474f">K</div><div class="t"><b>Immanuel Kant</b> <small>(1724–1804)</small><br>Bedeutender deutscher Philosoph („Beantwortung der Frage: Was ist Aufklärung?“, 1784).</div></div>
+      <div class="autor"><div class="av" style="background:#c27815">R</div><div class="t"><b>Jean-Jacques Rousseau</b> <small>(1712–1778)</small><br>Französischsprachiger Philosoph der Aufklärung, bekannt für Schriften zu Erziehung, Gesellschaft und Aphorismen.</div></div>
+      <div class="autor"><div class="av" style="background:#00695c">Lo</div><div class="t"><b>John Locke</b> <small>(1632–1704, England)</small><br>Englischer Philosoph und Vordenker der Aufklärung (Menschenrechte, Gewaltenteilung, Erfahrung als Quelle des Wissens).</div></div>
+
+      <!-- Aufgabe 4 -->
+      <div class="task" id="task-zuordnung" data-points="6">
+        <div class="task-header">
+          <h3>Aufgabe 4: Wer war's? Ordne die Personen richtig zu.</h3>
+          <div class="task-meta">
+            <span class="pts-badge">6 Punkte</span>
+            <span class="status-badge" id="status-zuordnung">Offen</span>
+          </div>
+        </div>
+        <div id="zuordnung"></div>
+        <div class="btn-row">
+          <button id="btn-check-zuordnung" onclick="checkSelects('zuordnung')">Überprüfen</button>
+          <button class="sek" id="btn-sol-zuordnung" disabled title="Bitte bearbeite und überprüfe zuerst die Aufgabe." onclick="showSelects('zuordnung')">🔒 Lösung einblenden</button>
+        </div>
+        <div class="fb" id="fb-zuordnung"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. FABEL ============ -->
+  <section id="fabel">
+    <div class="sec-head">
+      <div class="ico">🦊</div>
+      <div>
+        <h2>3. Die Textsorte Fabel</h2>
+        <small>Merkmale, fünfstufiger Aufbau und typische Charaktere</small>
+      </div>
+    </div>
+    <div class="inner">
+      <div class="info">
+        <p>Eine <b>Fabel</b> ist eine kurze, lehrhafte Erzählung. Darin sprechen, denken und handeln meist <b>Tiere</b> (seltener auch <b>Pflanzen</b>) wie Menschen. Sie besitzen feste <b>menschliche Eigenschaften</b> und stehen stellvertretend für menschliche Verhaltensweisen. Am Ende steht eine <b>Lehre (Moral)</b> – sie kann ausdrücklich formuliert sein oder muss vom Leser selbst erschlossen werden.</p>
+        <p><b>Warum war die Fabel in der Aufklärung so beliebt?</b> Sie veranschaulicht kluges und unvernünftiges Handeln leicht verständlich und belehrt die Leser. Außerdem konnte man mithilfe der Tierfiguren <b>verdeckte Kritik an Mächtigen</b> (z. B. dem Adel) üben, ohne direkt bestraft zu werden.</p>
+      </div>
+
+      <h3>Der fünfstufige Aufbau einer Fabel</h3>
+      <div class="grid">
+        <div class="tile"><div class="big">🏞️</div><b>1. Ausgangssituation</b>Figuren, Ort und Anlass werden vorgestellt</div>
+        <div class="tile"><div class="big">⚡</div><b>2. Aktion</b>Eine Figur handelt, der Konflikt entsteht</div>
+        <div class="tile"><div class="big">💬</div><b>3. Reaktion</b>Die andere Figur antwortet oder handelt</div>
+        <div class="tile"><div class="big">🎯</div><b>4. Ergebnis</b>Lösung oder überraschender Ausgang</div>
+        <div class="tile"><div class="big">☝️</div><b>5. Lehre (Moral)</b>Allgemeine Erkenntnis für uns Menschen</div>
+      </div>
+
+      <h3>Typische Fabeltiere und ihre Eigenschaften</h3>
+      <table class="tiertab">
+        <tr><td>🦊</td><td><b>Fuchs</b>: listig, schlau, schmeichlerisch</td><td>🦁</td><td><b>Löwe</b>: mächtig, stark, herrschsüchtig</td></tr>
+        <tr><td>🐺</td><td><b>Wolf</b>: gierig, gewalttätig, rücksichtslos</td><td>🐑</td><td><b>Lamm</b>: unschuldig, friedlich, wehrlos</td></tr>
+        <tr><td>🫏</td><td><b>Esel</b>: dumm, störrisch, manchmal geduldig</td><td>🐦‍⬛</td><td><b>Rabe</b>: eitel, leichtgläubig</td></tr>
+        <tr><td>🐜</td><td><b>Ameise</b>: fleißig, vorausschauend</td><td>🦗</td><td><b>Grille</b>: sorglos, leichtsinnig</td></tr>
+      </table>
+
+      <!-- Aufgabe 5 -->
+      <div class="task" id="task-tiere" data-points="5">
+        <div class="task-header">
+          <h3>Aufgabe 5: Fabeltiere und ihre Eigenschaften</h3>
+          <div class="task-meta">
+            <span class="pts-badge">5 Punkte</span>
+            <span class="status-badge" id="status-tiere">Offen</span>
+          </div>
+        </div>
+        <div id="tiere"></div>
+        <div class="btn-row">
+          <button id="btn-check-tiere" onclick="checkSelects('tiere')">Überprüfen</button>
+          <button class="sek" id="btn-sol-tiere" disabled title="Bitte bearbeite und überprüfe zuerst die Aufgabe." onclick="showSelects('tiere')">🔒 Lösung einblenden</button>
+        </div>
+        <div class="fb" id="fb-tiere"></div>
+      </div>
+
+      <!-- Aufgabe 6 -->
+      <div class="task" id="task-aufbau" data-points="5">
+        <div class="task-header">
+          <h3>Aufgabe 6: Aufbau einer Fabel ordnen</h3>
+          <div class="task-meta">
+            <span class="pts-badge">5 Punkte</span>
+            <span class="status-badge" id="status-aufbau">Offen</span>
+          </div>
+        </div>
+        <p>Ordne jedem Baustein die richtige Position (1 bis 5) im Ablauf einer Fabel zu:</p>
+        <div id="aufbau"></div>
+        <div class="btn-row">
+          <button id="btn-check-aufbau" onclick="checkSelects('aufbau')">Überprüfen</button>
+          <button class="sek" id="btn-sol-aufbau" disabled title="Bitte bearbeite und überprüfe zuerst die Aufgabe." onclick="showSelects('aufbau')">🔒 Lösung einblenden</button>
+        </div>
+        <div class="fb" id="fb-aufbau"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4. FABELTEXTE ============ -->
+  <section id="fabeltexte">
+    <div class="sec-head">
+      <div class="ico">📜</div>
+      <div>
+        <h2>4. Fabeltexte untersuchen</h2>
+        <small>Texte erschließen, Aufbau erkennen und Moral deuten</small>
+      </div>
+    </div>
+    <div class="inner">
+      <p>Lies die folgenden vier bekannten Fabeln (in eigenen Worten nacherzählt nach Äsop, Lessing und La Fontaine) aufmerksam und bearbeite die dazugehörigen Aufgaben.</p>
+
+      <!-- FABEL A -->
+      <div class="fabel">
+        <div class="szene-wrap">
+          <span class="lbl">Fabel A · Äsop</span>
+          <!-- SVG Illustration: Der Wolf und das Lamm am Bergbach -->
+          <svg viewBox="0 0 800 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration: Ein Wolf steht oben am Bergbach, ein Lamm trinkt weiter unten am Wasser.">
+            <defs>
+              <linearGradient id="skyA" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#8ec5fc"/>
+                <stop offset="100%" stop-color="#e0f2fe"/>
+              </linearGradient>
+              <linearGradient id="hillA" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#6b9e78"/>
+                <stop offset="100%" stop-color="#487556"/>
+              </linearGradient>
+              <linearGradient id="waterA" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#38bdf8"/>
+                <stop offset="100%" stop-color="#0284c7"/>
+              </linearGradient>
+            </defs>
+            <rect width="800" height="220" fill="url(#skyA)"/>
+            <!-- Berge im Hintergrund -->
+            <polygon points="0,140 130,45 270,140" fill="#94a3b8" opacity="0.55"/>
+            <polygon points="180,140 340,35 510,140" fill="#cbd5e1" opacity="0.65"/>
+            <polygon points="480,140 650,55 800,140" fill="#94a3b8" opacity="0.45"/>
+            <!-- Wiese / Hang -->
+            <path d="M0,95 Q220,105 420,140 T800,175 L800,220 L0,220 Z" fill="url(#hillA)"/>
+            <!-- Tannen -->
+            <g fill="#2d543c">
+              <polygon points="65,98 82,42 99,98"/><polygon points="60,115 82,62 104,115"/>
+              <polygon points="365,112 378,72 391,112"/><polygon points="360,126 378,86 396,126"/>
+              <polygon points="710,142 726,90 742,142"/><polygon points="704,158 726,108 748,158"/>
+            </g>
+            <!-- Bachlauf von links oben nach rechts unten -->
+            <path d="M120,112 C230,122 330,145 450,168 C560,188 660,196 800,204 L800,220 L510,220 C390,192 260,152 105,126 Z" fill="url(#waterA)"/>
+            <!-- Schaumlinien im Wasser -->
+            <path d="M170,126 Q230,134 285,146 M350,158 Q420,172 490,184 M550,194 Q630,204 710,208" stroke="#e0f2fe" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.8"/>
+            <!-- Felsen -->
+            <ellipse cx="145" cy="135" rx="22" ry="11" fill="#64748b"/>
+            <ellipse cx="475" cy="182" rx="18" ry="9" fill="#64748b"/>
+            <!-- WOLF (links oben am Bach) -->
+            <g transform="translate(195, 62)">
+              <!-- Schwanz -->
+              <path d="M-8,38 Q-28,48 -24,62 Q-12,56 -2,44" fill="#475569"/>
+              <!-- Beine -->
+              <rect x="6" y="46" width="7" height="24" rx="3" fill="#334155"/>
+              <rect x="18" y="48" width="7" height="24" rx="3" fill="#475569"/>
+              <rect x="42" y="48" width="7" height="24" rx="3" fill="#334155"/>
+              <rect x="53" y="46" width="7" height="24" rx="3" fill="#475569"/>
+              <!-- Körper -->
+              <ellipse cx="32" cy="36" rx="32" ry="17" fill="#475569"/>
+              <!-- Brustfell -->
+              <path d="M48,24 Q64,34 54,48 L42,45 Z" fill="#64748b"/>
+              <!-- Kopf & Schnauze (nach rechts unten gerichtet) -->
+              <circle cx="62" cy="23" r="14" fill="#475569"/>
+              <polygon points="72,21 90,26 73,31" fill="#334155"/>
+              <circle cx="89" cy="25" r="2.2" fill="#0f172a"/>
+              <!-- Ohren -->
+              <polygon points="54,12 58,0 64,11" fill="#334155"/>
+              <polygon points="62,12 68,1 71,13" fill="#475569"/>
+              <!-- Stechendes gelbes Auge -->
+              <circle cx="67" cy="20" r="2.5" fill="#facc15"/>
+              <circle cx="67.5" cy="20" r="1" fill="#0f172a"/>
+            </g>
+            <!-- LAMM (rechts unten am Bach) -->
+            <g transform="translate(565, 134)">
+              <!-- Beine -->
+              <rect x="12" y="34" width="5" height="18" rx="2" fill="#334155"/>
+              <rect x="21" y="35" width="5" height="18" rx="2" fill="#475569"/>
+              <rect x="35" y="35" width="5" height="18" rx="2" fill="#334155"/>
+              <rect x="43" y="34" width="5" height="18" rx="2" fill="#475569"/>
+              <!-- Wollkörper -->
+              <circle cx="22" cy="26" r="13" fill="#f8fafc"/>
+              <circle cx="34" cy="24" r="14" fill="#ffffff"/>
+              <circle cx="44" cy="27" r="12" fill="#f1f5f9"/>
+              <circle cx="29" cy="31" r="12" fill="#f8fafc"/>
+              <!-- Kopf (blickt ängstlich nach links oben zum Wolf) -->
+              <ellipse cx="10" cy="21" rx="9" ry="7.5" fill="#e2e8f0"/>
+              <ellipse cx="15" cy="15" rx="4" ry="2.2" transform="rotate(-25 15 15)" fill="#cbd5e1"/>
+              <circle cx="7" cy="19.5" r="1.8" fill="#0f172a"/>
+              <circle cx="2.5" cy="22" r="1.5" fill="#f472b6"/>
+            </g>
+          </svg>
+        </div>
+        <div class="txt">
+          <h4>Der Wolf und das Lamm (nach Äsop)</h4>
+          <p>Ein Wolf und ein Lamm kamen zur selben Zeit an einen Bach, um zu trinken. Der Wolf stand weit oben am Bach, das Lamm weit unten. Weil der Wolf das Lamm fressen wollte, suchte er nach einem Vorwand und rief: „Warum machst du mir das Wasser trüb, das ich trinken will?“ Das Lamm antwortete zitternd: „Wie kann ich das tun? Das Wasser fließt doch von dir zu mir herunter.“ Der Wolf knurrte: „Dann hast du mich eben vor einem halben Jahr beschimpft!“ – „Damals war ich noch gar nicht geboren“, erwiderte das Lamm. „Dann war es eben dein Vater!“, brüllte der Wolf, packte das Lamm und fraß es.</p>
+          <p class="lehre">Lehre: Wer Böses tun will, findet immer einen Vorwand. Gegen rohe Gewalt hilft dem Schwachen auch das beste Argument nichts.</p>
+        </div>
+      </div>
+
+      <!-- Aufgabe 7 -->
+      <div class="task" id="task-fabelA" data-points="4">
+        <div class="task-header">
+          <h3>Aufgabe 7: Fabel A untersuchen</h3>
+          <div class="task-meta">
+            <span class="pts-badge">4 Punkte</span>
+            <span class="status-badge" id="status-fabelA">Offen</span>
+          </div>
+        </div>
+        <div class="mc" data-a="1">
+          <div class="q">a) Warum stellt der Wolf dem Lamm immer neue Behauptungen entgegen?</div>
+          <label class="opt"><input type="radio" name="fa1"> Er möchte ehrlich herausfinden, wer den Bach verschmutzt hat.</label>
+          <label class="opt"><input type="radio" name="fa1"> Er sucht krampfhaft nach einer Ausrede, um das Lamm fressen zu dürfen.</label>
+          <label class="opt"><input type="radio" name="fa1"> Er will prüfen, ob das Lamm klug genug für eine Freundschaft ist.</label>
+        </div>
+        <div class="mc" data-a="2">
+          <div class="q">b) Wie verhält sich das Lamm im Gespräch?</div>
+          <label class="opt"><input type="radio" name="fa2"> Es beleidigt den Wolf und fordert ihn heraus.</label>
+          <label class="opt"><input type="radio" name="fa2"> Es versucht, den Wolf durch Schmeicheleien abzulenken.</label>
+          <label class="opt"><input type="radio" name="fa2"> Es widerlegt jeden Vorwurf ruhig und vernünftig, bleibt aber wehrlos.</label>
+        </div>
+        <div class="mc" data-a="0">
+          <div class="q">c) Welche gesellschaftliche Kritik der Aufklärung steckt hinter Wolf und Lamm?</div>
+          <label class="opt"><input type="radio" name="fa3"> Kritik an der Willkür mächtiger Herrscher gegenüber rechtlosen Untertanen.</label>
+          <label class="opt"><input type="radio" name="fa3"> Kritik an Kaufleuten, die zu hohe Preise verlangen.</label>
+          <label class="opt"><input type="radio" name="fa3"> Kritik an Menschen, die nicht richtig schwimmen können.</label>
+        </div>
+        <div class="q">d) Nenne in einem kurzen Satz die „Aktion“ und das „Ergebnis“ in dieser Fabel.</div>
+        <textarea id="txt-fabelA" style="min-height:56px" placeholder="Aktion: … / Ergebnis: …"></textarea>
+        <div class="btn-row">
+          <button id="btn-check-fabelA" onclick="checkFabelA()">Überprüfen</button>
+          <button class="sek" id="btn-sol-fabelA" disabled title="Bitte bearbeite und überprüfe zuerst die Aufgabe." onclick="toggle('sol-fabelA')">🔒 Musterlösung einblenden</button>
+        </div>
+        <div class="fb" id="fb-fabelA"></div>
+        <div class="loesung" id="sol-fabelA">
+          <b>Aktion:</b> Der Wolf beschuldigt das Lamm zu Unrecht, das Wasser zu trüben.<br>
+          <b>Ergebnis:</b> Obwohl das Lamm alle Vorwürfe logisch widerlegt, frisst der Wolf es trotzdem.
+        </div>
+      </div>
+
+      <!-- FABEL B -->
+      <div class="fabel">
+        <div class="szene-wrap">
+          <span class="lbl">Fabel B · Gotthold Ephraim Lessing</span>
+          <!-- SVG Illustration: Der Rabe und der Fuchs an der Eiche -->
+          <svg viewBox="0 0 800 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration: Ein Rabe sitzt mit einem Stück Fleisch auf einem Eichenast, unten blickt ein Fuchs schmeichelnd hinauf.">
+            <defs>
+              <linearGradient id="skyB" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#fde68a"/>
+                <stop offset="55%" stop-color="#fed7aa"/>
+                <stop offset="100%" stop-color="#fef3c7"/>
+              </linearGradient>
+              <linearGradient id="groundB" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#65a30d"/>
+                <stop offset="100%" stop-color="#3f6212"/>
+              </linearGradient>
+            </defs>
+            <rect width="800" height="220" fill="url(#skyB)"/>
+            <!-- Abendsonne -->
+            <circle cx="640" cy="72" r="36" fill="#fffbeb" opacity="0.75"/>
+            <!-- Waldsilhouette hinten -->
+            <path d="M0,165 Q90,125 180,155 T380,150 T590,158 T800,145 L800,220 L0,220 Z" fill="#84cc16" opacity="0.45"/>
+            <!-- Wiese -->
+            <rect x="0" y="168" width="800" height="52" fill="url(#groundB)"/>
+            <!-- Alte Eiche (links) -->
+            <path d="M125,220 L145,95 L110,45 L130,38 L160,82 L275,78 L278,92 L175,98 L185,220 Z" fill="#5c3a21"/>
+            <!-- Eichenkrone -->
+            <circle cx="130" cy="42" r="52" fill="#365314"/>
+            <circle cx="185" cy="36" r="46" fill="#3f6212"/>
+            <circle cx="95" cy="65" r="40" fill="#4d7c0f"/>
+            <circle cx="225" cy="54" r="36" fill="#4d7c0f"/>
+            <!-- RABE auf dem Ast (x=245, y=78) -->
+            <g transform="translate(222, 34)">
+              <!-- Schwanzfedern -->
+              <polygon points="8,36 -12,48 4,44" fill="#0f172a"/>
+              <!-- Krallen -->
+              <line x1="20" y1="38" x2="20" y2="46" stroke="#334155" stroke-width="2.5"/>
+              <line x1="27" y1="38" x2="27" y2="46" stroke="#334155" stroke-width="2.5"/>
+              <!-- Körper -->
+              <ellipse cx="24" cy="27" rx="16" ry="11" transform="rotate(-22 24 27)" fill="#1e293b"/>
+              <!-- Flügel -->
+              <path d="M16,22 Q28,18 33,31 Q20,34 12,29 Z" fill="#0f172a"/>
+              <!-- Kopf -->
+              <circle cx="37" cy="15" r="8.5" fill="#1e293b"/>
+              <circle cx="39" cy="13.5" r="1.6" fill="#f8fafc"/>
+              <!-- Schnabel -->
+              <polygon points="44,13 58,16 44,19" fill="#475569"/>
+              <!-- Stück Fleisch im Schnabel -->
+              <path d="M51,17 Q58,16 60,23 Q54,27 49,22 Z" fill="#b91c1c"/>
+              <circle cx="54" cy="20" r="1.5" fill="#fca5a5"/>
+            </g>
+            <!-- FUCHS unten rechts (blickt hoch zum Raben) -->
+            <g transform="translate(465, 118)">
+              <!-- Buschiger Schwanz -->
+              <path d="M62,48 Q98,35 104,56 Q92,72 60,60 Z" fill="#ea580c"/>
+              <path d="M92,43 Q104,48 102,58 Q93,62 88,54 Z" fill="#fff7ed"/>
+              <!-- Beine -->
+              <rect x="18" y="48" width="6" height="24" rx="3" fill="#9a3412"/>
+              <rect x="28" y="50" width="6" height="24" rx="3" fill="#c2410c"/>
+              <rect x="48" y="48" width="6" height="24" rx="3" fill="#9a3412"/>
+              <rect x="57" y="50" width="6" height="24" rx="3" fill="#c2410c"/>
+              <!-- Körper -->
+              <ellipse cx="40" cy="40" rx="28" ry="15" fill="#ea580c"/>
+              <!-- Weiße Brust -->
+              <path d="M14,32 Q8,45 22,52 L28,42 Z" fill="#fff7ed"/>
+              <!-- Kopf (nach links oben zum Raben gedreht) -->
+              <circle cx="14" cy="22" r="13" fill="#ea580c"/>
+              <polygon points="4,18 -13,13 3,26" fill="#ea580c"/>
+              <polygon points="-2,22 -13,13 3,26" fill="#fff7ed"/>
+              <circle cx="-13" cy="13" r="2" fill="#0f172a"/>
+              <!-- Ohren -->
+              <polygon points="12,11 10,-2 20,9" fill="#9a3412"/>
+              <polygon points="19,12 22,-1 27,13" fill="#c2410c"/>
+              <!-- Schlaues Auge -->
+              <circle cx="8" cy="18" r="2" fill="#0f172a"/>
+            </g>
+          </svg>
+        </div>
+        <div class="txt">
+          <h4>Der Rabe und der Fuchs (nach Lessing)</h4>
+          <p>Ein Rabe trug ein Stück vergiftetes Fleisch in seinen Krallen davon. Ein zorniger Gärtner hatte es für die Katzen seines Nachbarn ausgelegt. Als der Rabe sich auf einer alten Eiche niederließ, schlich ein Fuchs herbei und rief: „Sei mir gegrüßt, du Vogel des Jupiter!“ – „Für wen hältst du mich?“, fragte der Rabe. „Für wen ich dich halte?“, schmeichelte der Fuchs. „Bist du nicht der edle Adler, der täglich von der Rechten des Göttervaters herabkommt, um mich armen Fuchs zu speisen? Ich sehe ja die Gabe des Gottes in deinen Krallen!“<br>
+          Der Rabe staunte und freute sich innig, für einen Adler gehalten zu werden. „Ich darf den Fuchs nicht enttäuschen“, dachte er und ließ ihm großmütig das Fleisch hinunterfallen. Stolz flog er davon. Der Fuchs fing das Fleisch lachend auf und fraß es mit boshafter Freude. Doch bald verwandelte sich die Freude in Schmerz: Das Gift wirkte, und der Fuchs verendete.</p>
+          <p class="lehre">Lessings Schluss sinngemäß: Möchtet ihr Schmeichler doch nie etwas anderes als Gift erschmeicheln!</p>
+        </div>
+      </div>
+
+      <div class="info">
+        <b>🔍 Vergleich mit der Antike:</b> Bei Äsop (und La Fontaine) schmeichelt der Fuchs dem Raben, bis dieser singen möchte und den Käse fallen lässt – der Fuchs gewinnt. <b>Lessing verändert den Schluss bewusst</b>, um der Moral der Aufklärung gerecht zu werden.
+      </div>
+
+      <!-- Aufgabe 8 -->
+      <div class="task" id="task-fabelB" data-points="3">
+        <div class="task-header">
+          <h3>Aufgabe 8: Lessings Bearbeitung untersuchen</h3>
+          <div class="task-meta">
+            <span class="pts-badge">3 Punkte</span>
+            <span class="status-badge" id="status-fabelB">Offen</span>
+          </div>
+        </div>
+        <div class="mc" data-a="2">
+          <div class="q">a) Mit welchem Trick überlistet der Fuchs den Raben in Lessings Fassung?</div>
+          <label class="opt"><input type="radio" name="fb1"> Er droht dem Raben, den Baum zu fällen.</label>
+          <label class="opt"><input type="radio" name="fb1"> Er behauptet, das Fleisch sei schlecht und ungenießbar.</label>
+          <label class="opt"><input type="radio" name="fb1"> Er schmeichelt seiner Eitelkeit, indem er ihn als edlen Adler bezeichnet.</label>
+        </div>
+        <div class="mc" data-a="1">
+          <div class="q">b) Wie unterscheidet sich Lessings Ende von der antiken Fabel Äsops?</div>
+          <label class="opt"><input type="radio" name="fb2"> Bei Lessing teilen sich Rabe und Fuchs die Beute.</label>
+          <label class="opt"><input type="radio" name="fb2"> Bei Lessing fällt der Betrüger selbst auf seine List herein und stirbt am vergifteten Fleisch.</label>
+          <label class="opt"><input type="radio" name="fb2"> Bei Lessing durchschaut der Rabe den Fuchs sofort.</label>
+        </div>
+        <div class="mc" data-a="0">
+          <div class="q">c) Welche Botschaft vermittelt Lessing dadurch seinen Lesern?</div>
+          <label class="opt"><input type="radio" name="fb3"> Falsche Schmeichelei und Hinterlist sollen nicht belohnt, sondern bestraft werden.</label>
+          <label class="opt"><input type="radio" name="fb3"> Wer schön singen kann, hat im Leben immer Erfolg.</label>
+          <label class="opt"><input type="radio" name="fb3"> Man soll fremden Tieren im Wald niemals vertrauen.</label>
+        </div>
+        <div class="btn-row">
+          <button id="btn-check-fabelB" onclick="checkMCOnly('fabelB')">Überprüfen</button>
+          <button class="sek" id="btn-sol-fabelB" disabled title="Bitte bearbeite und überprüfe zuerst die Aufgabe." onclick="toggle('sol-fabelB')">🔒 Erläuterung einblenden</button>
+        </div>
+        <div class="fb" id="fb-fabelB"></div>
+        <div class="loesung" id="sol-fabelB">
+          Lessing störte sich daran, dass in der alten Fabel der unehrliche Schmeichler (der Fuchs) am Ende triumphiert. In der Aufklärung soll jedoch das Vernünftige und Moralische siegen – deshalb wendet sich die List gegen den Fuchs selbst.
+        </div>
+      </div>
+
+      <!-- FABEL C -->
+      <div class="fabel">
+        <div class="szene-wrap">
+          <span class="lbl">Fabel C · Äsop / La Fontaine</span>
+          <!-- SVG Illustration: Geteilte Jahreszeiten (Sommer: Grille musiziert / Winter: Ameise im Bau) -->
+          <svg viewBox="0 0 800 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration: Links singt die Grille im warmen Sommer, rechts hat die Ameise im Winter Vorräte gesammelt.">
+            <defs>
+              <linearGradient id="summerSky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#38bdf8"/>
+                <stop offset="100%" stop-color="#fef08a"/>
+              </linearGradient>
+              <linearGradient id="winterSky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#334155"/>
+                <stop offset="100%" stop-color="#cbd5e1"/>
+              </linearGradient>
+            </defs>
+            <!-- Linke Hälfte: SOMMER -->
+            <rect x="0" y="0" width="400" height="220" fill="url(#summerSky)"/>
+            <circle cx="85" cy="52" r="28" fill="#facc15"/>
+            <path d="M0,155 Q190,135 400,158 L400,220 L0,220 Z" fill="#65a30d"/>
+            <!-- Kornähren & Blumen -->
+            <g stroke="#eab308" stroke-width="3" fill="none">
+              <path d="M60,175 Q65,130 75,105"/><path d="M85,180 Q88,135 95,112"/><path d="M110,176 Q105,135 112,115"/>
+            </g>
+            <!-- GRILLE (musiziert fröhlich) -->
+            <g transform="translate(185, 112)">
+              <!-- Hinterbein -->
+              <polyline points="22,26 42,6 52,38" fill="none" stroke="#15803d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- Vorderbeine -->
+              <line x1="12" y1="28" x2="6" y2="42" stroke="#15803d" stroke-width="3"/>
+              <line x1="20" y1="30" x2="18" y2="42" stroke="#15803d" stroke-width="3"/>
+              <!-- Körper -->
+              <ellipse cx="22" cy="24" rx="20" ry="8" transform="rotate(-15 22 24)" fill="#22c55e"/>
+              <!-- Kopf & Fühler -->
+              <circle cx="5" cy="19" r="6.5" fill="#16a34a"/>
+              <path d="M2,13 Q-10,2 -16,6 M5,12 Q-4,0 -10,2" stroke="#15803d" stroke-width="1.8" fill="none"/>
+              <circle cx="3" cy="18" r="1.4" fill="#0f172a"/>
+              <!-- Musiknoten -->
+              <text x="52" y="10" font-size="18" fill="#b45309" font-weight="bold">♪</text>
+              <text x="68" y="-2" font-size="15" fill="#b45309" font-weight="bold">♫</text>
+            </g>
+
+            <!-- Rechte Hälfte: WINTER -->
+            <rect x="400" y="0" width="400" height="220" fill="url(#winterSky)"/>
+            <!-- Schneeflocken -->
+            <g fill="#ffffff" opacity="0.85">
+              <circle cx="450" cy="35" r="3"/><circle cx="520" cy="60" r="2.5"/><circle cx="610" cy="28" r="3.5"/>
+              <circle cx="710" cy="52" r="3"/><circle cx="760" cy="85" r="2.5"/><circle cx="480" cy="95" r="2.5"/>
+              <circle cx="670" cy="90" r="3"/>
+            </g>
+            <!-- Schneelandschaft -->
+            <path d="M400,158 Q580,142 800,156 L800,220 L400,220 Z" fill="#f8fafc"/>
+            <!-- Ameisenhügel / Bau mit warmem Lichtfenster -->
+            <path d="M565,165 Q640,85 725,165 Z" fill="#78350f"/>
+            <path d="M585,142 Q640,92 702,142 Q670,135 640,144 Q610,134 585,142 Z" fill="#f1f5f9"/>
+            <circle cx="645" cy="142" r="14" fill="#fbbf24"/>
+            <!-- AMEISE vor dem Bau -->
+            <g transform="translate(515, 134)">
+              <ellipse cx="14" cy="18" rx="6" ry="5" fill="#1e293b"/>
+              <ellipse cx="25" cy="19" rx="5" ry="4" fill="#334155"/>
+              <ellipse cx="37" cy="17" rx="8" ry="6" fill="#1e293b"/>
+              <line x1="22" y1="22" x2="18" y2="30" stroke="#0f172a" stroke-width="2"/>
+              <line x1="26" y1="22" x2="26" y2="30" stroke="#0f172a" stroke-width="2"/>
+              <line x1="31" y1="22" x2="35" y2="30" stroke="#0f172a" stroke-width="2"/>
+              <!-- Goldenes Korn -->
+              <ellipse cx="12" cy="10" rx="7" ry="4" fill="#f59e0b"/>
+            </g>
+            <!-- Trennlinie in der Mitte -->
+            <line x1="400" y1="0" x2="400" y2="220" stroke="#ffffff" stroke-width="3" stroke-dasharray="6,6"/>
+          </svg>
+        </div>
+        <div class="txt">
+          <h4>Die Grille und die Ameise (nach Äsop / La Fontaine)</h4>
+          <p>Den ganzen Sommer über zirpte und sang die Grille fröhlich in der Sonne. Die Ameise dagegen schleppte Tag für Tag Körner in ihren Bau. „Warum plagst du dich so?“, lachte die Grille. „Komm, genieß lieber das schöne Wetter!“ Doch die Ameise arbeitete weiter.<br>
+          Als der Winter kam und tiefer Schnee die Felder bedeckte, fand die Grille nichts mehr zu fressen. Hungrig klopfte sie bei der Ameise an und bat um ein paar Körner. „Was hast du denn im Sommer gemacht?“, fragte die Ameise. „Ich habe gesungen“, antwortete die Grille. „So“, sagte die Ameise, „dann tanze jetzt!“</p>
+        </div>
+      </div>
+
+      <!-- Aufgabe 9 -->
+      <div class="task" id="task-fabelC" data-points="3">
+        <div class="task-header">
+          <h3>Aufgabe 9: Lehre erschließen und bewerten</h3>
+          <div class="task-meta">
+            <span class="pts-badge">3 Punkte</span>
+            <span class="status-badge" id="status-fabelC">Offen</span>
+          </div>
+        </div>
+        <div class="mc" data-a="2">
+          <div class="q">a) Welche Moral lässt sich aus der Handlung erschließen?</div>
+          <label class="opt"><input type="radio" name="fc1"> Musik und Gesang sind wichtiger als harte Arbeit.</label>
+          <label class="opt"><input type="radio" name="fc1"> Im Winter findet man auf den Feldern immer genug Nahrung.</label>
+          <label class="opt"><input type="radio" name="fc1"> Wer rechtzeitig und vernünftig vorsorgt, gerät später nicht in Not.</label>
+        </div>
+        <div class="mc" data-a="0">
+          <div class="q">b) In dieser Fabel steht die Lehre nicht ausdrücklich am Schluss. Was bedeutet das?</div>
+          <label class="opt"><input type="radio" name="fc2"> Der Leser soll seinen eigenen Verstand gebrauchen und die Lehre selbst ableiten.</label>
+          <label class="opt"><input type="radio" name="fc2"> Der Text gehört deshalb nicht zur Gattung der Fabel.</label>
+          <label class="opt"><input type="radio" name="fc2"> Die Geschichte hat keine tiefere Bedeutung.</label>
+        </div>
+        <div class="q">c) Findest du die Reaktion der Ameise im Winter gerecht? Begründe deine Meinung in 2 Sätzen.</div>
+        <textarea id="txt-fabelC" style="min-height:58px" placeholder="Deine begründete Stellungnahme …"></textarea>
+        <div class="btn-row">
+          <button id="btn-check-fabelC" onclick="checkFabelC()">Überprüfen</button>
+          <button class="sek" id="btn-sol-fabelC" disabled title="Bitte bearbeite und überprüfe zuerst die Aufgabe." onclick="toggle('sol-fabelC')">🔒 Musterlösung einblenden</button>
+        </div>
+        <div class="fb" id="fb-fabelC"></div>
+        <div class="loesung" id="sol-fabelC">
+          <b>Beispiel für eine begründete Stellungnahme:</b> Einerseits ist die Ameise im Recht, weil die Grille den Sommer leichtsinnig verschwendet und sogar über die fleißige Ameise gelacht hat. Andererseits wirkt die Ameise hartherzig, da sie der hungernden Grille aus Prinzip nicht hilft, obwohl sie genug Vorräte besitzt.
+        </div>
+      </div>
+
+      <!-- FABEL D -->
+      <div class="fabel">
+        <div class="szene-wrap">
+          <span class="lbl">Fabel D · Äsop</span>
+          <!-- SVG Illustration: Der Löwe im Jägernetz und die kleine Maus -->
+          <svg viewBox="0 0 800 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration: Ein mächtiger Löwe liegt gefangen in einem Jägernetz, während eine kleine Maus die Seile durchnagt.">
+            <defs>
+              <linearGradient id="skyD" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#fde68a"/>
+                <stop offset="100%" stop-color="#fef9c3"/>
+              </linearGradient>
+              <linearGradient id="savannaD" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#eab308"/>
+                <stop offset="100%" stop-color="#ca8a04"/>
+              </linearGradient>
+            </defs>
+            <rect width="800" height="220" fill="url(#skyD)"/>
+            <!-- Akazienbaum im Hintergrund -->
+            <path d="M110,165 L125,85 L90,55 L105,48 L135,75 L175,50 L185,58 L142,88 L150,165 Z" fill="#78350f"/>
+            <ellipse cx="138" cy="48" rx="85" ry="22" fill="#65a30d"/>
+            <!-- Savannenboden -->
+            <path d="M0,158 Q400,145 800,162 L800,220 L0,220 Z" fill="url(#savannaD)"/>
+            <!-- LÖWE im Netz -->
+            <g transform="translate(275, 86)">
+              <!-- Schwanz -->
+              <path d="M15,58 Q-15,52 -18,36" fill="none" stroke="#d97706" stroke-width="5" stroke-linecap="round"/>
+              <circle cx="-18" cy="34" r="6" fill="#78350f"/>
+              <!-- Liegender Körper -->
+              <ellipse cx="68" cy="54" rx="54" ry="26" fill="#f59e0b"/>
+              <!-- Vordertatzen -->
+              <ellipse cx="122" cy="72" rx="22" ry="9" fill="#d97706"/>
+              <!-- Mähne -->
+              <circle cx="112" cy="36" r="28" fill="#78350f"/>
+              <!-- Löwenkopf -->
+              <circle cx="116" cy="36" r="18" fill="#f59e0b"/>
+              <circle cx="122" cy="32" r="2.2" fill="#0f172a"/>
+              <polygon points="128,37 134,37 131,41" fill="#78350f"/>
+              <!-- JÄGERNETZ über dem Löwen -->
+              <g stroke="#57534e" stroke-width="2.5" fill="none">
+                <path d="M22,32 Q68,18 115,32 M16,48 Q68,36 122,48 M18,64 Q68,54 120,64"/>
+                <path d="M35,24 L28,74 M55,20 L50,78 M75,20 L74,78 M95,22 L96,76"/>
+              </g>
+            </g>
+            <!-- KLEINE MAUS (nagt am Netz rechts) -->
+            <g transform="translate(425, 146)">
+              <path d="M28,16 Q46,12 52,20" fill="none" stroke="#f472b6" stroke-width="2" stroke-linecap="round"/>
+              <ellipse cx="18" cy="14" rx="12" ry="8" fill="#94a3b8"/>
+              <circle cx="8" cy="12" r="6" fill="#94a3b8"/>
+              <circle cx="11" cy="6" r="4" fill="#cbd5e1"/>
+              <circle cx="6" cy="11" r="1.4" fill="#0f172a"/>
+              <circle cx="2" cy="13" r="1.4" fill="#f472b6"/>
+            </g>
+          </svg>
+        </div>
+        <div class="txt">
+          <h4>Der Löwe und die Maus (nach Äsop)</h4>
+          <p>Ein Löwe schlief im Schatten eines Baumes. Eine kleine Maus lief über seine Nase und weckte ihn. Wütend packte er sie mit seiner Pranke. „Lass mich frei!“, flehte die Maus. „Vielleicht kann ich dir eines Tages helfen.“ Der Löwe lachte über diese Idee, ließ die Maus aber laufen.<br>
+          Einige Zeit später geriet der Löwe in ein Jägernetz. So sehr er auch brüllte und zerrte, er kam nicht frei. Die Maus hörte ihn, eilte herbei und nagte so lange an den Seilen, bis der Löwe befreit war. „Du hast über mich gelacht“, sagte die Maus. „Nun siehst du, dass auch eine kleine Maus einem Löwen helfen kann.“</p>
+        </div>
+      </div>
+
+      <!-- Aufgabe 10 -->
+      <div class="task" id="task-fabelD" data-points="6">
+        <div class="task-header">
+          <h3>Aufgabe 10: Fabel D gliedern &amp; Lehren aller vier Fabeln zuordnen</h3>
+          <div class="task-meta">
+            <span class="pts-badge">6 Punkte</span>
+            <span class="status-badge" id="status-fabelD">Offen</span>
+          </div>
+        </div>
+        <p><b>Teil 1 (2 Punkte):</b> Notiere Stichworte zum Aufbau von Fabel D („Der Löwe und die Maus“):</p>
+        <table>
+          <tr><th style="width:200px">Aufbaustufe</th><th>Deine Stichworte zu Fabel D</th></tr>
+          <tr><td>🏞️ Ausgangssituation</td><td><input type="text" class="fd-inp" style="width:100%" placeholder="Wer, wo, was geschieht zu Beginn?"></td></tr>
+          <tr><td>⚡ Aktion</td><td><input type="text" class="fd-inp" style="width:100%" placeholder="Welcher Konflikt entsteht?"></td></tr>
+          <tr><td>💬 Reaktion</td><td><input type="text" class="fd-inp" style="width:100%" placeholder="Wie reagieren Maus und Löwe?"></td></tr>
+          <tr><td>🎯 Ergebnis</td><td><input type="text" class="fd-inp" style="width:100%" placeholder="Wie endet die Geschichte?"></td></tr>
+          <tr><td>☝️ Lehre (Moral)</td><td><input type="text" class="fd-inp" style="width:100%" placeholder="Welche Erkenntnis folgt daraus?"></td></tr>
+        </table>
+
+        <p style="margin-top:18px"><b>Teil 2 (4 Punkte):</b> Ordne jeder Moral die passende Fabel (A bis D) zu:</p>
+        <div id="lehren"></div>
+
+        <div class="btn-row">
+          <button id="btn-check-fabelD" onclick="checkFabelD()">Überprüfen</button>
+          <button class="sek" id="btn-sol-fabelD" disabled title="Bitte fülle Tabelle und Zuordnung aus und klicke auf Überprüfen." onclick="showFabelD()">🔒 Musterlösung einblenden</button>
+        </div>
+        <div class="fb" id="fb-fabelD"></div>
+        <div class="loesung" id="sol-fabelD">
+          <b>Musterlösung zum Aufbau von Fabel D:</b><br>
+          • <b>Ausgangssituation:</b> Ein Löwe schläft unter einem Baum; eine Maus läuft über ihn und weckt ihn.<br>
+          • <b>Aktion:</b> Der verärgerte Löwe fängt die Maus mit seiner Pranke.<br>
+          • <b>Reaktion:</b> Die Maus bittet um Gnade und verspricht Hilfe; der Löwe lacht, lässt sie aber frei.<br>
+          • <b>Ergebnis:</b> Als der Löwe in ein Jägernetz gerät, nagt die Maus die Seile durch und rettet ihn.<br>
+          • <b>Lehre:</b> Man soll Schwächere niemals unterschätzen; auch Kleine können Mächtigen helfen, und Großmut zahlt sich aus.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ 5. APHORISMUS ============ -->
+  <section id="aphorismus">
+    <div class="sec-head">
+      <div class="ico">💬</div>
+      <div>
+        <h2>5. Der Aphorismus</h2>
+        <small>Kurz, zugespitzt und zum Nachdenken anregend</small>
+      </div>
+    </div>
+    <div class="inner">
+      <div class="info">
+        <p>Ein <b>Aphorismus</b> (griech. <i>aphorismós</i> = Abgrenzung, Bestimmung) ist ein <b>kurzer, prägnanter Prosasatz</b> (oder eine knappe Folge weniger Sätze). Er formuliert eine <b>allgemeingültige Wahrheit</b>, Lebensweisheit oder überraschende Erkenntnis.</p>
+        <p>Typisch für Aphorismen ist ihre <b>Zuspitzung (Pointe)</b>: Sie arbeiten oft mit Gegensätzen, Wortspielen oder Bildern und regen den Leser zum <b>Nachdenken</b> an.</p>
+        <p>Als <b>Begründer des deutschen Aphorismus</b> gilt <b>Georg Christoph Lichtenberg</b>. Weitere bekannte Verfasser sind <b>Gotthold Ephraim Lessing</b>, <b>Jean-Jacques Rousseau</b> sowie später Johann Wolfgang von Goethe und Marie von Ebner-Eschenbach.</p>
+      </div>
+
+      <div class="grid">
+        <div class="tile"><div class="big">✂️</div><b>Kürze</b>meist ein einzelner, geschliffener Satz</div>
+        <div class="tile"><div class="big">🌍</div><b>Allgemeingültigkeit</b>trifft eine Aussage über den Menschen an sich</div>
+        <div class="tile"><div class="big">🎯</div><b>Pointierung</b>zugespitzt, oft witzig oder mit Gegensatz</div>
+        <div class="tile"><div class="big">🤔</div><b>Denkanstoß</b>regt zum Weiterdenken und Hinterfragen an</div>
+      </div>
+
+      <div class="zitat">
+        „Wenn ein Buch und ein Kopf zusammenstoßen und es klingt hohl, ist das allemal im Buch?“
+        <span>Georg Christoph Lichtenberg (1742–1799)</span>
+      </div>
+
+      <div class="merke">So erschließt du einen Aphorismus: 1. Bildliche Ausdrücke oder Gegensätze genau betrachten. 2. Die Kernaussage in eigenen Worten als allgemeine Lebensregel formulieren. 3. Überlegen, warum der Satz zum Nachdenken anregt.</div>
+
+      <!-- Aufgabe 11 -->
+      <div class="task" id="task-aphMC" data-points="3">
+        <div class="task-header">
+          <h3>Aufgabe 11: Aphorismen entschlüsseln</h3>
+          <div class="task-meta">
+            <span class="pts-badge">3 Punkte</span>
+            <span class="status-badge" id="status-aphMC">Offen</span>
+          </div>
+        </div>
+        <div class="mc" data-a="0">
+          <div class="q">a) „Wenn ein Buch und ein Kopf zusammenstoßen und es klingt hohl, ist das allemal im Buch?“ (Lichtenberg)</div>
+          <label class="opt"><input type="radio" name="ap1"> Wenn jemand ein Buch nicht versteht, liegt die Ursache oft beim ungebildeten Leser und nicht am Buch.</label>
+          <label class="opt"><input type="radio" name="ap1"> Bücher sollten möglichst dick sein, damit sie nicht hohl klingen.</label>
+          <label class="opt"><input type="radio" name="ap1"> Lesen schadet dem eigenen Verstand.</label>
+        </div>
+        <div class="mc" data-a="2">
+          <div class="q">b) „Ich weiß nicht, ob es besser wird, wenn es anders wird; aber so viel kann ich sagen: es muss anders werden, wenn es gut werden soll.“ (Lichtenberg)</div>
+          <label class="opt"><input type="radio" name="ap2"> Jede Veränderung führt automatisch zu einem besseren Ergebnis.</label>
+          <label class="opt"><input type="radio" name="ap2"> Man sollte alles beim Alten lassen, weil Veränderungen gefährlich sind.</label>
+          <label class="opt"><input type="radio" name="ap2"> Veränderung garantiert zwar noch keine Verbesserung, ist aber notwendig, um Missstände zu überwinden.</label>
+        </div>
+        <div class="mc" data-a="1">
+          <div class="q">c) „Wer über gewisse Dinge den Verstand nicht verliert, der hat keinen zu verlieren.“ (Lessing)</div>
+          <label class="opt"><input type="radio" name="ap3"> Kluge Menschen bleiben in jeder Situation völlig emotionslos.</label>
+          <label class="opt"><input type="radio" name="ap3"> Über manche Ungerechtigkeiten oder Dummheiten muss sich ein vernünftiger Mensch einfach empören.</label>
+          <label class="opt"><input type="radio" name="ap3"> Wer nachdenkt, verliert schnell sein Gedächtnis.</label>
+        </div>
+        <div class="btn-row">
+          <button id="btn-check-aphMC" onclick="checkMCOnly('aphMC')">Überprüfen</button>
+          <button class="sek" id="btn-sol-aphMC" disabled title="Bitte bearbeite und überprüfe zuerst die Aufgabe." onclick="toggle('sol-aphMC')">🔒 Erläuterung einblenden</button>
+        </div>
+        <div class="fb" id="fb-aphMC"></div>
+        <div class="loesung" id="sol-aphMC">
+          Alle drei Beispiele zeigen typische Merkmale des Aphorismus: Sie sind knapp formuliert, nutzen rhetorische Fragen oder scharfe Gegensätze („anders werden“ vs. „gut werden“) und zwingen den Leser zum eigenen Nachdenken.
+        </div>
+      </div>
+
+      <!-- Aufgabe 12 -->
+      <div class="task" id="task-aphMix" data-points="6">
+        <div class="task-header">
+          <h3>Aufgabe 12: Textsorte erkennen &amp; Wissen anwenden</h3>
+          <div class="task-meta">
+            <span class="pts-badge">6 Punkte</span>
+            <span class="status-badge" id="status-aphMix">Offen</span>
+          </div>
+        </div>
+        <p><b>Teil 1 (4 Punkte):</b> Entscheide jeweils, ob es sich um einen Aphorismus handelt oder nicht:</p>
+        <div id="aphja"></div>
+
+        <div class="q" style="margin-top:16px">Teil 2 (2 Punkte): Beschreibe in einem vollständigen Satz zwei typische Merkmale eines Aphorismus und nenne seinen deutschen Begründer sowie einen weiteren Verfasser.</div>
+        <textarea id="txt-aphMix" style="min-height:64px" placeholder="Merkmale: … / Begründer und weiterer Verfasser: …"></textarea>
+
+        <div class="btn-row">
+          <button id="btn-check-aphMix" onclick="checkAphMix()">Überprüfen</button>
+          <button class="sek" id="btn-sol-aphMix" disabled title="Bitte bearbeite und überprüfe zuerst die Aufgabe." onclick="showAphMix()">🔒 Musterlösung einblenden</button>
+        </div>
+        <div class="fb" id="fb-aphMix"></div>
+        <div class="loesung" id="sol-aphMix">
+          <b>Musterlösung zu Teil 2:</b> Ein Aphorismus ist ein <b>kurzer, pointierter Satz</b>, der eine <b>allgemeingültige Wahrheit</b> bzw. Lebensweisheit ausdrückt und zum Nachdenken anregt. Als deutscher Begründer gilt <b>Georg Christoph Lichtenberg</b>; ein weiterer bekannter Verfasser ist <b>Gotthold Ephraim Lessing</b> (oder Jean-Jacques Rousseau).
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ 6. LERNKARTEN ============ -->
+  <section id="karten">
+    <div class="sec-head">
+      <div class="ico">🃏</div>
+      <div>
+        <h2>6. Interaktive Lernkarten</h2>
+        <small>Klicke auf eine Karte, um dein Wissen selbstständig zu wiederholen</small>
+      </div>
+    </div>
+    <div class="inner">
+      <div id="kartenbox"></div>
+      <div class="kartennav">
+        <button onclick="mischen()">🔀 Karten mischen</button>
+        <button class="sek" onclick="document.querySelectorAll('.karte').forEach(k=>k.classList.remove('flip'))">↩️ Alle zurückdrehen</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 7. WISSENS-CHECK ============ -->
+  <section id="abschluss">
+    <div class="sec-head">
+      <div class="ico">🏆</div>
+      <div>
+        <h2>7. Großer Wissens-Check</h2>
+        <small>10 Abschlussfragen zur gesamten Wiederholungseinheit (einmalige Auswertung)</small>
+      </div>
+    </div>
+    <div class="inner">
+      <div class="task" id="task-quiz" data-points="10" style="border:none;padding:4px 0;margin:0;background:transparent">
+        <div class="task-header">
+          <h3>Abschluss-Wiederholung: 10 Fragen</h3>
+          <div class="task-meta">
+            <span class="pts-badge">10 Punkte</span>
+            <span class="status-badge" id="status-quiz">Offen</span>
+          </div>
+        </div>
+        <div id="quiz"></div>
+        <div class="btn-row">
+          <button id="btn-check-quiz" onclick="checkQuiz()">Wissens-Check auswerten</button>
+        </div>
+        <div class="fb" id="fb-quiz"></div>
+        <div id="quizfb"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="score">⭐ <span id="scoreVal">0</span> / <span id="scoreMax">61</span> Punkte</div>
+
+<footer>
+  Interaktive Wiederholungseinheit · Literarische Aufklärung (Deutsch, 8. Klasse)
+</footer>
+
+<script>
+  // Gesamtpunktzahl & Status-Verwaltung
+  const MAX_POINTS = 61;
+  let totalScore = 0;
+  let completedTasks = 0;
+  const TOTAL_TASKS = 11; // 10 Übungsaufgaben + 1 Wissens-Check
+  const lockedTasks = new Set();
+
+  document.getElementById('scoreMax').textContent = MAX_POINTS;
+
+  function addPoints(pts) {
+    totalScore += pts;
+    document.getElementById('scoreVal').textContent = totalScore;
+  }
+
+  function completeTask(taskId) {
+    if (lockedTasks.has(taskId)) return;
+    lockedTasks.add(taskId);
+    completedTasks++;
+
+    const taskEl = document.getElementById('task-' + taskId);
+    if (taskEl) taskEl.classList.add('done');
+
+    const statusBadge = document.getElementById('status-' + taskId);
+    if (statusBadge) {
+      statusBadge.textContent = '✓ Abgeschlossen';
+      statusBadge.classList.add('completed');
+    }
+
+    const checkBtn = document.getElementById('btn-check-' + taskId);
+    if (checkBtn) checkBtn.disabled = true;
+
+    const solBtn = document.getElementById('btn-sol-' + taskId);
+    if (solBtn) {
+      solBtn.disabled = false;
+      solBtn.removeAttribute('title');
+      solBtn.innerHTML = solBtn.innerHTML.replace('🔒 ', '👁️ ');
+    }
+
+    // Fortschrittsbalken aktualisieren
+    const pct = Math.round((completedTasks / TOTAL_TASKS) * 100);
+    document.getElementById('progressBar').style.width = pct + '%';
+  }
+
+  function norm(s) {
+    return s.toLowerCase().trim()
+      .replace(/[.,!?;:"„“‚‘()]/g, '')
+      .replace(/\s+/g, ' ');
+  }
+
+  function toggle(id) {
+    const e = document.getElementById(id);
+    if (!e) return;
+    e.style.display = e.style.display === 'block' ? 'none' : 'block';
+  }
+
+  // ============ AUFGABE 1: Richtig oder Falsch (5 Punkte) ============
+  const rfData = [
+    [
+      "Die Epoche der literarischen Aufklärung erstreckt sich vor allem über das 18. Jahrhundert (ca. 1720 bis 1790).",
+      true,
+      "",
+      ""
+    ],
+    [
+      "Der lateinische Leitspruch ‚Sapere aude!‘ stammt ursprünglich von Gotthold Ephraim Lessing.",
+      false,
+      "kant|immanuel kant",
+      "Der Leitspruch ‚Sapere aude!‘ (1784) wurde von Immanuel Kant geprägt."
+    ],
+    [
+      "Die Aufklärung fordert den Menschen auf, nicht blind Autoritäten zu glauben, sondern die eigene Vernunft zu nutzen.",
+      true,
+      "",
+      ""
+    ],
+    [
+      "In Fabeln können neben Tieren gelegentlich auch Pflanzen menschliche Eigenschaften besitzen.",
+      true,
+      "",
+      ""
+    ],
+    [
+      "In den Dramen der Aufklärung treten ausschließlich Könige und Adlige als Hauptfiguren auf.",
+      false,
+      "bürger|bürgerliche|bürgertum",
+      "Im Mittelpunkt stehen nun bürgerliche Menschen (das Bürgertum)."
+    ]
+  ];
+
+  (function initRF() {
+    let h = '<table><tr><th style="width:68px;text-align:center">richtig</th><th style="width:68px;text-align:center">falsch</th><th>Aussage &amp; ggf. Verbesserung</th></tr>';
+    rfData.forEach((d, i) => {
+      h += `<tr id="rf-row-${i}">
+        <td style="text-align:center"><input type="radio" name="rf_q_${i}" value="r"></td>
+        <td style="text-align:center"><input type="radio" name="rf_q_${i}" value="f"></td>
+        <td>
+          <div>${d[0]}</div>
+          <input type="text" id="rf-txt-${i}" placeholder="Verbesserung (nur falls Aussage falsch ist)" style="width:100%;margin-top:6px">
+        </td>
+      </tr>`;
+    });
+    document.getElementById('rf').innerHTML = h + '</table>';
+    document.getElementById('rfL').innerHTML = '<b>Lösungsübersicht:</b><ol style="margin:6px 0 0 18px">' +
+      rfData.map(d => '<li>' + (d[1] ? '<b>richtig</b>' : '<b>falsch</b> → ' + d[3]) + '</li>').join('') +
+      '</ol>';
+  })();
+
+  function checkRF() {
+    if (lockedTasks.has('rf')) return;
+    const fb = document.getElementById('fb-rf');
+
+    // Prüfen, ob alle 5 Aussagen angekreuzt wurden
+    for (let i = 0; i < rfData.length; i++) {
+      const sel = document.querySelector(`input[name="rf_q_${i}"]:checked`);
+      if (!sel) {
+        fb.className = 'fb warn';
+        fb.textContent = '⚠️ Bitte kreuze zuerst bei allen 5 Aussagen „richtig“ oder „falsch“ an.';
+        return;
+      }
+      if (sel.value === 'f' && norm(document.getElementById(`rf-txt-${i}`).value).length < 3) {
+        fb.className = 'fb warn';
+        fb.textContent = `⚠️ Du hast Aussage ${i + 1} als „falsch“ markiert – bitte trage noch deine Verbesserung ein.`;
+        return;
+      }
+    }
+
+    let pts = 0;
+    rfData.forEach((d, i) => {
+      const row = document.getElementById(`rf-row-${i}`);
+      const sel = document.querySelector(`input[name="rf_q_${i}"]:checked`);
+      const txtInput = document.getElementById(`rf-txt-${i}`);
+      const t = norm(txtInput.value);
+
+      const isCorrect = (d[1] && sel.value === 'r') ||
+        (!d[1] && sel.value === 'f' && d[2].split('|').some(key => t.includes(key)));
+
+      row.className = isCorrect ? 'ok' : 'no';
+      if (isCorrect) pts++;
+
+      // Inputs sperren
+      row.querySelectorAll('input').forEach(inp => inp.disabled = true);
+    });
+
+    addPoints(pts);
+    completeTask('rf');
+    fb.className = 'fb success';
+    fb.textContent = `Ergebnis: ${pts} von ${rfData.length} Punkten erreicht. Du kannst dir jetzt die Lösung einblenden.`;
+  }
+
+  // ============ AUFGABE 2: Lückentext (6 Punkte) ============
+  function checkGaps() {
+    if (lockedTasks.has('gaps')) return;
+    const task = document.getElementById('task-gaps');
+    const gaps = task.querySelectorAll('.gap');
+    const fb = document.getElementById('fb-gaps');
+
+    for (const g of gaps) {
+      if (norm(g.value) === '') {
+        fb.className = 'fb warn';
+        fb.textContent = '⚠️ Bitte fülle zuerst alle 6 Lücken aus, bevor du überprüfst.';
+        return;
+      }
+    }
+
+    let pts = 0;
+    gaps.forEach(g => {
+      const accepted = g.dataset.a.split('|');
+      const ok = accepted.some(a => norm(g.value) === a);
+      g.classList.add(ok ? 'ok' : 'no');
+      g.disabled = true;
+      if (ok) pts++;
+    });
+
+    addPoints(pts);
+    completeTask('gaps');
+    fb.className = 'fb success';
+    fb.textContent = `Ergebnis: ${pts} von ${gaps.length} Lücken richtig ausgefüllt.`;
+  }
+
+  function showGaps() {
+    if (!lockedTasks.has('gaps')) return;
+    document.querySelectorAll('#task-gaps .gap').forEach(g => {
+      g.value = g.dataset.a.split('|')[0];
+      g.classList.remove('no');
+      g.classList.add('ok');
+    });
+  }
+
+  // ============ FREITEXT-AUFGABE HELFER (Aufgabe 3) ============
+  function checkOpenTask(taskId, textareaIds, points) {
+    if (lockedTasks.has(taskId)) return;
+    const fb = document.getElementById('fb-' + taskId);
+
+    for (const id of textareaIds) {
+      const el = document.getElementById(id);
+      if (el.value.trim().length < 12) {
+        fb.className = 'fb warn';
+        fb.textContent = '⚠️ Bitte formuliere zu allen Teilaufgaben eine vollständige Antwort (mindestens ein kurzer Satz), bevor du einreichst.';
+        return;
+      }
+    }
+
+    textareaIds.forEach(id => {
+      const el = document.getElementById(id);
+      el.disabled = true;
+      el.classList.add('ok');
+    });
+
+    addPoints(points);
+    completeTask(taskId);
+    fb.className = 'fb success';
+    fb.textContent = `✓ Antworten gespeichert (+${points} Punkte für die Bearbeitung). Vergleiche jetzt deine Formulierungen mit der Musterlösung!`;
+    document.getElementById('sol-' + taskId).style.display = 'block';
+  }
+
+  // ============ SELECT-AUFGABEN (Aufgaben 4, 5, 6) ============
+  function buildSelects(id, items, opts) {
+    document.getElementById(id).innerHTML = '<table>' + items.map((it, idx) =>
+      `<tr>
+        <td>${it[0]}</td>
+        <td style="width:240px">
+          <select id="sel-${id}-${idx}" data-a="${it[1]}" style="width:100%">
+            <option value="">– bitte wählen –</option>
+            ${opts.map(o => `<option value="${o}">${o}</option>`).join('')}
+          </select>
+        </td>
+      </tr>`
+    ).join('') + '</table>';
+  }
+
+  function checkSelects(id) {
+    if (lockedTasks.has(id)) return;
+    const selects = document.querySelectorAll(`#${id} select`);
+    const fb = document.getElementById('fb-' + id);
+
+    for (const s of selects) {
+      if (s.value === '') {
+        fb.className = 'fb warn';
+        fb.textContent = '⚠️ Bitte wähle zuerst in jeder Zeile eine passende Antwort aus.';
+        return;
+      }
+    }
+
+    let pts = 0;
+    selects.forEach(s => {
+      const ok = s.value === s.dataset.a;
+      s.classList.add(ok ? 'ok' : 'no');
+      s.disabled = true;
+      if (ok) pts++;
+    });
+
+    addPoints(pts);
+    completeTask(id);
+    fb.className = 'fb success';
+    fb.textContent = `Ergebnis: ${pts} von ${selects.length} Punkten erreicht.`;
+  }
+
+  function showSelects(id) {
+    if (!lockedTasks.has(id)) return;
+    document.querySelectorAll(`#${id} select`).forEach(s => {
+      s.value = s.dataset.a;
+      s.classList.remove('no');
+      s.classList.add('ok');
+    });
+  }
+
+  buildSelects('zuordnung', [
+    ["schrieb die ersten antiken Fabeln im alten Griechenland", "Äsop"],
+    ["verfasste ‚Nathan der Weise‘ und erneuerte die deutsche Fabel (1759)", "Gotthold Ephraim Lessing"],
+    ["gilt als Begründer des deutschen Aphorismus (‚Sudelbücher‘)", "Georg Christoph Lichtenberg"],
+    ["definierte 1784 Aufklärung und prägte ‚Sapere aude!‘", "Immanuel Kant"],
+    ["englischer Vordenker der Aufklärung (Menschenrechte & Gewaltenteilung)", "John Locke"],
+    ["französischsprachiger Philosoph der Aufklärung & Verfasser von Sinnsprüchen", "Jean-Jacques Rousseau"]
+  ], [
+    "Äsop",
+    "Gotthold Ephraim Lessing",
+    "Georg Christoph Lichtenberg",
+    "Immanuel Kant",
+    "John Locke",
+    "Jean-Jacques Rousseau"
+  ]);
+
+  buildSelects('tiere', [
+    ["🦊 Fuchs", "listig und schmeichlerisch"],
+    ["🐺 Wolf", "gierig und gewalttätig"],
+    ["🐑 Lamm", "unschuldig und wehrlos"],
+    ["🐜 Ameise", "fleißig und vorausschauend"],
+    ["🐦‍⬛ Rabe", "eitel und leichtgläubig"]
+  ], [
+    "listig und schmeichlerisch",
+    "gierig und gewalttätig",
+    "unschuldig und wehrlos",
+    "fleißig und vorausschauend",
+    "eitel und leichtgläubig"
+  ]);
+
+  buildSelects('aufbau', [
+    ["☝️ Lehre (Moral)", "5. Schritt"],
+    ["💬 Reaktion der zweiten Figur", "3. Schritt"],
+    ["🏞️ Ausgangssituation", "1. Schritt"],
+    ["🎯 Ergebnis / Ausgang", "4. Schritt"],
+    ["⚡ Aktion (Konflikt beginnt)", "2. Schritt"]
+  ], ["1. Schritt", "2. Schritt", "3. Schritt", "4. Schritt", "5. Schritt"]);
+
+  buildSelects('lehren', [
+    ["Wer Böses tun will, findet immer eine Ausrede; Gewalt schlägt Vernunft.", "Fabel A: Wolf & Lamm"],
+    ["Falsche Schmeichler werden am Ende selbst bestraft.", "Fabel B: Rabe & Fuchs"],
+    ["Wer rechtzeitig vorsorgt, muss später keine Not leiden.", "Fabel C: Grille & Ameise"],
+    ["Unterschätze niemanden – auch Schwache können Mächtigen helfen.", "Fabel D: Löwe & Maus"]
+  ], [
+    "Fabel A: Wolf & Lamm",
+    "Fabel B: Rabe & Fuchs",
+    "Fabel C: Grille & Ameise",
+    "Fabel D: Löwe & Maus"
+  ]);
+
+  buildSelects('aphja', [
+    ["„Wer nichts weiß, muss alles glauben.“ (Marie von Ebner-Eschenbach)", "Aphorismus"],
+    ["Ein Fuchs sah hoch oben Trauben hängen und sprang vergeblich danach …", "kein Aphorismus"],
+    ["„Wer nichts als Chemie versteht, versteht auch die nicht recht.“ (Lichtenberg)", "Aphorismus"],
+    ["Georg Christoph Lichtenberg lehrte als Professor für Physik in Göttingen.", "kein Aphorismus"]
+  ], ["Aphorismus", "kein Aphorismus"]);
+
+  // ============ MC HELFER ============
+  function evaluateMCBlock(taskEl) {
+    const questions = taskEl.querySelectorAll('.mc');
+    // Erst prüfen, ob alle beantwortet sind
+    for (const q of questions) {
+      if (!q.querySelector('input[type="radio"]:checked')) {
+        return -1;
+      }
+    }
+    let pts = 0;
+    questions.forEach(q => {
+      const labels = q.querySelectorAll('label');
+      const correctIdx = +q.dataset.a;
+      let chosenIdx = -1;
+      labels.forEach((lbl, idx) => {
+        const inp = lbl.querySelector('input');
+        if (inp.checked) chosenIdx = idx;
+        inp.disabled = true;
+      });
+      if (chosenIdx === correctIdx) {
+        pts++;
+      } else if (chosenIdx >= 0) {
+        labels[chosenIdx].classList.add('no');
+      }
+      labels[correctIdx].classList.add('ok');
+    });
+    return pts;
+  }
+
+  function checkMCOnly(taskId) {
+    if (lockedTasks.has(taskId)) return;
+    const taskEl = document.getElementById('task-' + taskId);
+    const fb = document.getElementById('fb-' + taskId);
+    const pts = evaluateMCBlock(taskEl);
+
+    if (pts === -1) {
+      fb.className = 'fb warn';
+      fb.textContent = '⚠️ Bitte wähle zuerst bei jeder Teilfrage eine Antwort aus.';
+      return;
+    }
+
+    addPoints(pts);
+    completeTask(taskId);
+    fb.className = 'fb success';
+    fb.textContent = `Ergebnis: ${pts} von ${taskEl.querySelectorAll('.mc').length} Punkten erreicht. (Die richtige Lösung ist grün markiert.)`;
+  }
+
+  // ============ AUFGABE 7: Fabel A (3 MC + 1 Freitext = 4 Punkte) ============
+  function checkFabelA() {
+    if (lockedTasks.has('fabelA')) return;
+    const taskEl = document.getElementById('task-fabelA');
+    const fb = document.getElementById('fb-fabelA');
+    const txt = document.getElementById('txt-fabelA');
+
+    // Prüfen ob alle MC gewählt und Text ausgefüllt
+    for (const q of taskEl.querySelectorAll('.mc')) {
+      if (!q.querySelector('input[type="radio"]:checked')) {
+        fb.className = 'fb warn';
+        fb.textContent = '⚠️ Bitte beantworte zuerst alle drei Auswahlfragen (a–c).';
+        return;
+      }
+    }
+    if (txt.value.trim().length < 10) {
+      fb.className = 'fb warn';
+      fb.textContent = '⚠️ Bitte ergänze noch deine Stichworte zu Teilaufgabe d).';
+      return;
+    }
+
+    const mcPts = evaluateMCBlock(taskEl);
+    txt.disabled = true;
+    txt.classList.add('ok');
+
+    const total = mcPts + 1;
+    addPoints(total);
+    completeTask('fabelA');
+    fb.className = 'fb success';
+    fb.textContent = `Ergebnis: ${total} von 4 Punkten erreicht (inkl. 1 Punkt für Teilaufgabe d).`;
+  }
+
+  // ============ AUFGABE 9: Fabel C (2 MC + 1 Freitext = 3 Punkte) ============
+  function checkFabelC() {
+    if (lockedTasks.has('fabelC')) return;
+    const taskEl = document.getElementById('task-fabelC');
+    const fb = document.getElementById('fb-fabelC');
+    const txt = document.getElementById('txt-fabelC');
+
+    for (const q of taskEl.querySelectorAll('.mc')) {
+      if (!q.querySelector('input[type="radio"]:checked')) {
+        fb.className = 'fb warn';
+        fb.textContent = '⚠️ Bitte beantworte zuerst die Auswahlfragen a) und b).';
+        return;
+      }
+    }
+    if (txt.value.trim().length < 12) {
+      fb.className = 'fb warn';
+      fb.textContent = '⚠️ Bitte schreibe noch deine kurze Stellungnahme bei c).';
+      return;
+    }
+
+    const mcPts = evaluateMCBlock(taskEl);
+    txt.disabled = true;
+    txt.classList.add('ok');
+
+    const total = mcPts + 1;
+    addPoints(total);
+    completeTask('fabelC');
+    fb.className = 'fb success';
+    fb.textContent = `Ergebnis: ${total} von 3 Punkten erreicht (inkl. 1 Punkt für deine Stellungnahme).`;
+  }
+
+  // ============ AUFGABE 10: Fabel D Tabelle (2 P.) + Lehren-Selects (4 P.) = 6 Punkte ============
+  function checkFabelD() {
+    if (lockedTasks.has('fabelD')) return;
+    const fb = document.getElementById('fb-fabelD');
+    const inputs = document.querySelectorAll('#task-fabelD .fd-inp');
+    const selects = document.querySelectorAll('#lehren select');
+
+    for (const inp of inputs) {
+      if (inp.value.trim().length < 4) {
+        fb.className = 'fb warn';
+        fb.textContent = '⚠️ Bitte fülle zuerst alle 5 Zeilen der Aufbau-Tabelle mit Stichworten aus.';
+        return;
+      }
+    }
+    for (const s of selects) {
+      if (s.value === '') {
+        fb.className = 'fb warn';
+        fb.textContent = '⚠️ Bitte ordne in Teil 2 noch allen vier Lehren die richtige Fabel zu.';
+        return;
+      }
+    }
+
+    inputs.forEach(inp => {
+      inp.disabled = true;
+      inp.classList.add('ok');
+    });
+
+    let selPts = 0;
+    selects.forEach(s => {
+      const ok = s.value === s.dataset.a;
+      s.classList.add(ok ? 'ok' : 'no');
+      s.disabled = true;
+      if (ok) selPts++;
+    });
+
+    const total = 2 + selPts;
+    addPoints(total);
+    completeTask('fabelD');
+    fb.className = 'fb success';
+    fb.textContent = `Ergebnis: ${total} von 6 Punkten erreicht (2 Punkte für die ausgefüllte Tabelle + ${selPts} Punkte für die Zuordnung).`;
+  }
+
+  function showFabelD() {
+    if (!lockedTasks.has('fabelD')) return;
+    toggle('sol-fabelD');
+    document.querySelectorAll('#lehren select').forEach(s => {
+      s.value = s.dataset.a;
+      s.classList.remove('no');
+      s.classList.add('ok');
+    });
+  }
+
+  // ============ AUFGABE 12: Aphorismus Mix (4 Selects + 2 P. Freitext = 6 Punkte) ============
+  function checkAphMix() {
+    if (lockedTasks.has('aphMix')) return;
+    const fb = document.getElementById('fb-aphMix');
+    const selects = document.querySelectorAll('#aphja select');
+    const txt = document.getElementById('txt-aphMix');
+
+    for (const s of selects) {
+      if (s.value === '') {
+        fb.className = 'fb warn';
+        fb.textContent = '⚠️ Bitte entscheide zuerst in Teil 1 bei allen vier Beispielen.';
+        return;
+      }
+    }
+    if (txt.value.trim().length < 15) {
+      fb.className = 'fb warn';
+      fb.textContent = '⚠️ Bitte beantworte noch Teil 2 (Merkmale & Verfasser) in einem vollständigen Satz.';
+      return;
+    }
+
+    let selPts = 0;
+    selects.forEach(s => {
+      const ok = s.value === s.dataset.a;
+      s.classList.add(ok ? 'ok' : 'no');
+      s.disabled = true;
+      if (ok) selPts++;
+    });
+
+    txt.disabled = true;
+    txt.classList.add('ok');
+
+    const total = selPts + 2;
+    addPoints(total);
+    completeTask('aphMix');
+    fb.className = 'fb success';
+    fb.textContent = `Ergebnis: ${total} von 6 Punkten erreicht (${selPts} Punkte in Teil 1 + 2 Punkte für Teil 2).`;
+  }
+
+  function showAphMix() {
+    if (!lockedTasks.has('aphMix')) return;
+    toggle('sol-aphMix');
+    document.querySelectorAll('#aphja select').forEach(s => {
+      s.value = s.dataset.a;
+      s.classList.remove('no');
+      s.classList.add('ok');
+    });
+  }
+
+  // ============ 6. LERNKARTEN ============
+  const karten = [
+    ["⏳", "Zeitraum der Aufklärung", "18. Jahrhundert (ca. 1720 – 1790)"],
+    ["🧠", "Kants Definition von Aufklärung", "„Ausgang des Menschen aus seiner selbstverschuldeten Unmündigkeit“"],
+    ["🦉", "Sapere aude!", "„Habe Mut, dich deines eigenen Verstandes zu bedienen!“"],
+    ["🎩", "Wer steht neu im Mittelpunkt?", "bürgerliche Menschen (das Bürgertum)"],
+    ["🎓", "Ziel der Aufklärungsliteratur", "belehren und unterhalten („nützen und erfreuen“)"],
+    ["🏛️", "Erster antiker Fabeldichter", "Äsop (ca. 6. Jh. v. Chr., Griechenland)"],
+    ["🦊", "Figuren der Fabel", "Tiere (und selten Pflanzen) mit menschlichen Eigenschaften"],
+    ["🧩", "5 Schritte einer Fabel", "Ausgangssituation – Aktion – Reaktion – Ergebnis – Lehre"],
+    ["💬", "Was ist ein Aphorismus?", "ein kurzer, pointierter Satz mit einer allgemeingültigen Wahrheit"],
+    ["🔬", "Begründer des dt. Aphorismus", "Georg Christoph Lichtenberg („Sudelbücher“)"],
+    ["📖", "Wichtigstes Werk vor der Epoche", "die Bibel"],
+    ["⚖️", "Weitere Denker der Aufklärung", "z. B. Lessing, Kant, Jean-Jacques Rousseau, John Locke"]
+  ];
+
+  function zeigeKarten(arr) {
+    document.getElementById('kartenbox').innerHTML = arr.map(k =>
+      `<div class="karte" onclick="this.classList.toggle('flip')">
+        <div class="in">
+          <div class="v">
+            <div class="em">${k[0]}</div>
+            <div class="tt">${k[1]}</div>
+            <div class="hint">👆 klicken zum Umdrehen</div>
+          </div>
+          <div class="r">${k[2]}</div>
+        </div>
+      </div>`
+    ).join('');
+  }
+
+  function mischen() {
+    zeigeKarten([...karten].sort(() => Math.random() - 0.5));
+  }
+  zeigeKarten(karten);
+
+  // ============ 7. GROSSER WISSENS-CHECK (10 Fragen = 10 Punkte) ============
+  const quiz = [
+    [
+      "In welchem Jahrhundert liegt die literarische Epoche der Aufklärung hauptsächlich?",
+      ["im 16. Jahrhundert", "im 18. Jahrhundert (ca. 1720–1790)", "im 20. Jahrhundert"],
+      1
+    ],
+    [
+      "Was gilt in der Aufklärung als wichtigster Maßstab für das menschliche Handeln?",
+      ["die Vernunft (der eigene Verstand)", "der blinde Gehorsam gegenüber dem König", "alte Bräuche und Aberglaube"],
+      0
+    ],
+    [
+      "Von wem stammt der berühmte Aufsatz ‚Beantwortung der Frage: Was ist Aufklärung?‘ (1784)?",
+      ["Äsop", "Georg Christoph Lichtenberg", "Immanuel Kant"],
+      2
+    ],
+    [
+      "Wer gilt als Begründer des deutschen Aphorismus?",
+      ["Georg Christoph Lichtenberg", "Jean de La Fontaine", "John Locke"],
+      0
+    ],
+    [
+      "Welche Figuren handeln in Fabeln typischerweise wie Menschen?",
+      ["Tiere und gelegentlich Pflanzen", "Maschinen und Werkzeuge", "Zauberer und Drachen"],
+      0
+    ],
+    [
+      "Was gilt für die Lehre (Moral) einer Fabel?",
+      ["Sie fehlt in Fabeln grundsätzlich.", "Sie kann ausdrücklich am Ende stehen oder muss selbst erschlossen werden.", "Sie steht immer als Überschrift über der Fabel."],
+      1
+    ],
+    [
+      "Wodurch zeichnet sich ein Aphorismus aus?",
+      ["Er ist eine lange, spannende Abenteuergeschichte.", "Er ist ein kurzer, zugespitzter Satz mit einer allgemeingültigen Wahrheit.", "Er besteht immer aus vier gereimten Strophen."],
+      1
+    ],
+    [
+      "Welche Gesellschaftsschicht rückt in der Literatur der Aufklärung neu in den Mittelpunkt?",
+      ["das Bürgertum", "ausschließlich der Hochadel", "Ritter und Mönche"],
+      0
+    ],
+    [
+      "Welches Buch war vor der Epoche der Aufklärung das wichtigste Werk der Literatur?",
+      ["Lessings Fabelsammlung", "die Bibel", "Lichtenbergs Sudelbücher"],
+      1
+    ],
+    [
+      "Warum nutzten Aufklärer gerne Fabeln, um Missstände anzuprangern?",
+      ["Weil Tiere lustig aussehen und keine Bedeutung haben.", "Weil man durch Tierfiguren indirekt Kritik an Mächtigen üben konnte.", "Weil es im 18. Jahrhundert noch keine Romane gab."],
+      1
+    ]
+  ];
+
+  document.getElementById('quiz').innerHTML = quiz.map((q, i) =>
+    `<div class="mc" data-a="${q[2]}">
+      <div class="q">${i + 1}. ${q[0]}</div>
+      ${q[1].map(o => `<label class="opt"><input type="radio" name="qz_${i}"> ${o}</label>`).join('')}
+    </div>`
+  ).join('');
+
+  function checkQuiz() {
+    if (lockedTasks.has('quiz')) return;
+    const taskEl = document.getElementById('task-quiz');
+    const fb = document.getElementById('fb-quiz');
+    const pts = evaluateMCBlock(taskEl);
+
+    if (pts === -1) {
+      fb.className = 'fb warn';
+      fb.textContent = '⚠️ Bitte beantworte zuerst alle 10 Fragen des Wissens-Checks, bevor du auswertest.';
+      return;
+    }
+
+    addPoints(pts);
+    completeTask('quiz');
+    fb.textContent = '';
+
+    const box = document.getElementById('quizfb');
+    let ico, txt, cls;
+    if (pts >= 9) {
+      ico = '🏆';
+      txt = 'Hervorragend! Du beherrschst die Merkmale, Autoren und Textsorten der Aufklärung sicher.';
+      cls = 'top';
+    } else if (pts >= 6) {
+      ico = '👍';
+      txt = 'Gut gemacht! Schau dir die grün markierten Lösungen der falsch beantworteten Fragen noch einmal in Ruhe an.';
+      cls = 'mid';
+    } else {
+      ico = '📚';
+      txt = 'Lies dir die Infokästen und Lernkarten oben noch einmal aufmerksam durch, um die Grundlagen zu festigen.';
+      cls = 'low';
+    }
+
+    box.className = cls;
+    box.style.display = 'block';
+    box.innerHTML = `<div class="gross">${ico}</div>
+      <b>Wissens-Check: ${pts} von ${quiz.length} Punkten</b><br>
+      <div style="margin-top:6px">Gesamtergebnis der Wiederholungseinheit: <b>${totalScore} von ${MAX_POINTS} Punkten</b></div>
+      <p style="margin:10px 0 0">${txt}</p>`;
+    box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+</script>
+</body>
+</html>
